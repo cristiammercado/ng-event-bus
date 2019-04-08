@@ -1,11 +1,11 @@
 {
   "name": "ng-event-bus",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
     "email": "contact@cristiammercado.com",
-    "url": "https://github.com/govorov/ng-radio/issues"
+    "url": "https://github.com/cristiammercado/ng-event-bus/issues"
   },
   "main": "dist/ng_event_bus.js",
   "types": "dist/ng_event_bus.d.ts",
@@ -20,7 +20,9 @@
   "keywords": [
     "angular",
     "message-bus",
-    "event-bus"
+    "event-bus",
+    "events",
+    "rxjs"
   ],
   "author": "Cristiam Mercado <contact@cristiammercado.com>",
   "license": "MIT",

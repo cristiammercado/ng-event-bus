@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 /**
  * Main library class.
  *
- * @since 1.0.0
+ * @since 0.0.1
  * @version 1.0.0
  */
 export declare class NgEventBus {
@@ -18,7 +18,7 @@ export declare class NgEventBus {
      * @param {string} key Key to identify the message/event.
      * @param {string} wildcard Wilcard received from on method.
      */
-    private keyMatch;
+    keyMatch(key: string, wildcard: string): boolean;
     /**
      * Publish a message/event to event bus.
      *

@@ -38,7 +38,6 @@ describe('NgEventBus works as expected', () => {
 
     });
 
-
     const matchPairs = [
         ['a', 'a'],
         ['a:b', 'a:b'],
@@ -61,7 +60,6 @@ describe('NgEventBus works as expected', () => {
         ['a:b:c', 'b'],
         ['a:b:c', 'a:b:c:d'],
     ];
-
 
     it('keyMatch works as expected', () => {
 
