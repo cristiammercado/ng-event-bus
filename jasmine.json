@@ -1,0 +1,8 @@
+{
+  "spec_dir": "test",
+  "spec_files": [
+    "ng-event-bus.spec.ts"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": true
+}

@@ -1,0 +1,39 @@
+{
+  "name": "ng-event-bus",
+  "version": "0.0.1",
+  "description": "RxJS-based message/event bus service for Angular.",
+  "homepage": "https://github.com/cristiammercado/ng-event-bus",
+  "bugs": {
+    "email": "contact@cristiammercado.com",
+    "url": "https://github.com/govorov/ng-radio/issues"
+  },
+  "main": "dist/ng_event_bus.js",
+  "types": "dist/ng_event_bus.d.ts",
+  "scripts": {
+    "build": "./node_modules/.bin/tsc -d ./src/ng_event_bus.ts --lib es6 --outDir ./dist",
+    "test": "./node_modules/.bin/jasmine-ts --config=jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiammercado/ng-event-bus.git"
+  },
+  "keywords": [
+    "angular",
+    "message-bus",
+    "event-bus"
+  ],
+  "author": "Cristiam Mercado <contact@cristiammercado.com>",
+  "license": "MIT",
+  "dependencies": {
+    "rxjs": "6.4.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "3.3.12",
+    "jasmine": "3.4.0",
+    "jasmine-core": "3.4.0",
+    "jasmine-ts": "0.3.0",
+    "ts-node": "8.0.3",
+    "typescript": "3.4.2",
+    "uuid": "3.3.2"
+  }
+}
