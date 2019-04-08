@@ -19,12 +19,12 @@ describe('NgEventBus works as expected', () => {
 
     it('Submit to channel', () => {
 
-        let radio = new NgEventBus();
+        let eventBus = new NgEventBus();
         let channelMessages = generateMessages();
 
         //subscribe to message
         Object.keys(channelMessages).forEach((channel) => {
-            radio.on(channel).subscribe((data) => {
+            eventBus.on(channel).subscribe((data) => {
                 expect(data).toEqual(channelMessages[channel]);
             });
         });
@@ -32,7 +32,7 @@ describe('NgEventBus works as expected', () => {
 
         //cast something
         Object.keys(channelMessages).forEach((channel) => {
-            radio.cast(channel, channelMessages[channel]);
+            eventBus.cast(channel, channelMessages[channel]);
         });
 
 
@@ -63,23 +63,23 @@ describe('NgEventBus works as expected', () => {
 
     it('keyMatch works as expected', () => {
 
-        let radio = new NgEventBus();
+        let eventBus = new NgEventBus();
 
         matchPairs.forEach((pair) => {
             let cast = pair[0];
             let wild = pair[1];
-            expect(radio.keyMatch(cast, wild)).toEqual(true);
+            expect(eventBus.keyMatch(cast, wild)).toEqual(true);
         });
 
         dontMatchPairs.forEach((pair) => {
             let cast = pair[0];
             let wild = pair[1];
-            expect(radio.keyMatch(cast, wild)).toEqual(false);
+            expect(eventBus.keyMatch(cast, wild)).toEqual(false);
         });
     });
 
     it('Submit to wildcard', () => {
-        let radio = new NgEventBus();
+        let eventBus = new NgEventBus();
         let values = {};
 
         matchPairs.forEach((pair) => {
@@ -87,8 +87,8 @@ describe('NgEventBus works as expected', () => {
             let wild = pair[1];
             values[cast] = uuid.v4();
 
-            radio.cast(cast, values[cast]);
-            radio.on(wild).subscribe((receivedValue) => {
+            eventBus.cast(cast, values[cast]);
+            eventBus.on(wild).subscribe((receivedValue) => {
                 expect(receivedValue).toEqual(values[cast]);
             });
         });

@@ -37,11 +37,11 @@ import { NgEventBus } from 'ng-event-bus';
 
 Or create an instance manually:
 
-`let radio = new NgEventBus();`
+`let eventBus = new NgEventBus();`
 
 Since you have `NgEventBus` instance in your app, you can use these methods for passing messages:
 
-* `eventBus.cast(key, data)` - send message to radio.
+* `eventBus.cast(key, data)` - send message to event bus.
 
 * `eventBus.on(pattern)` - returns observable you can subscribe to listen events.
 
