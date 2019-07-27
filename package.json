@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
