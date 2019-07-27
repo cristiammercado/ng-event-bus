@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
  * Main library class.
  *
  * @since 0.0.1
- * @version 1.0.0
+ * @version 1.0.3
  */
 export declare class NgEventBus {
     private _eventBus;

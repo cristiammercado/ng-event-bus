@@ -10,7 +10,7 @@ interface EventBusMessage {
  * Main library class.
  *
  * @since 0.0.1
- * @version 1.0.0
+ * @version 1.0.3
  */
 export class NgEventBus {
 
@@ -51,7 +51,7 @@ export class NgEventBus {
             let cK = kArr[i];
             let cW = wArr[i];
 
-            if (cW == ww && (typeof cK !== 'undefined')) {
+            if (cW === ww && (typeof cK !== 'undefined')) {
                 return true;
             }
 

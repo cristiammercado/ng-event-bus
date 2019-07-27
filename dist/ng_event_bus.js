@@ -6,7 +6,7 @@ var operators_1 = require("rxjs/operators");
  * Main library class.
  *
  * @since 0.0.1
- * @version 1.0.0
+ * @version 1.0.3
  */
 var NgEventBus = /** @class */ (function () {
     /**
@@ -37,7 +37,7 @@ var NgEventBus = /** @class */ (function () {
         for (var i = 0; i < max; i++) {
             var cK = kArr[i];
             var cW = wArr[i];
-            if (cW == ww && (typeof cK !== 'undefined')) {
+            if (cW === ww && (typeof cK !== 'undefined')) {
                 return true;
             }
             if (!partMatch(cW, cK)) {
