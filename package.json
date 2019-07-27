@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
@@ -27,14 +27,15 @@
   "author": "Cristiam Mercado <contact@cristiammercado.com>",
   "license": "MIT",
   "dependencies": {
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.5.2"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.3.12",
+    "@types/jasmine": "^3.3.16",
     "jasmine": "^3.4.0",
     "jasmine-core": "^3.4.0",
     "jasmine-ts": "^0.3.0",
-    "ts-node": "^8.0.3",
+    "mem": "^4.0.0",
+    "ts-node": "^8.3.0",
     "typescript": "^3.4.2",
     "uuid": "^3.3.2"
   }
