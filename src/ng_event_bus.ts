@@ -10,7 +10,7 @@ interface EventBusMessage {
  * Main library class.
  *
  * @since 0.0.1
- * @version 1.0.3
+ * @version 1.0.4
  */
 export class NgEventBus {
 
@@ -32,20 +32,20 @@ export class NgEventBus {
      */
     public keyMatch(key: string, wildcard: string) {
 
-        let w = '*';
-        let ww = '**';
+        const w = '*';
+        const ww = '**';
 
         let partMatch = (wl, k) => {
             return (wl === w) || (wl === k);
         };
 
-        let sep = this.separator;
-        let kArr = key.split(sep);
-        let wArr = wildcard.split(sep);
+        const sep = this.separator;
+        const kArr = key.split(sep);
+        const wArr = wildcard.split(sep);
 
-        let kLen = kArr.length;
-        let wLen = wArr.length;
-        let max = Math.max(kLen, wLen);
+        const kLen = kArr.length;
+        const wLen = wArr.length;
+        const max = Math.max(kLen, wLen);
 
         for (let i = 0; i < max; i++) {
             let cK = kArr[i];
