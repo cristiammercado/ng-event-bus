@@ -3,10 +3,16 @@ import { Observable } from 'rxjs';
  * Main library class.
  *
  * @since 0.0.1
- * @version 1.0.4
+ * @version 1.0.5
  */
 export declare class NgEventBus {
+    /**
+     * Main observable to multicast to all observers.
+     */
     private _eventBus;
+    /**
+     * Key message separator.
+     */
     private separator;
     /**
      * Constructor for this class: Initializes event bus.
@@ -16,7 +22,7 @@ export declare class NgEventBus {
      * Validates key matching.
      *
      * @param {string} key Key to identify the message/event.
-     * @param {string} wildcard Wilcard received from on method.
+     * @param {string} wildcard Wildcard received from on method.
      */
     keyMatch(key: string, wildcard: string): boolean;
     /**
