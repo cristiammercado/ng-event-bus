@@ -1,34 +1,37 @@
 import {Observable, Subject} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
-
-interface EventBusMessage {
-    key: string;
-    data?: any;
-}
+import {IEventBusMessage} from './event_bus_message';
 
 /**
  * Main library class.
  *
  * @since 0.0.1
- * @version 1.0.4
+ * @version 1.0.5
  */
 export class NgEventBus {
 
-    private _eventBus: Subject<EventBusMessage>;
+    /**
+     * Main observable to multicast to all observers.
+     */
+    private _eventBus: Subject<IEventBusMessage>;
+
+    /**
+     * Key message separator.
+     */
     private separator = ':';
 
     /**
      * Constructor for this class: Initializes event bus.
      */
     constructor() {
-        this._eventBus = new Subject<EventBusMessage>();
+        this._eventBus = new Subject<IEventBusMessage>();
     }
 
     /**
      * Validates key matching.
      *
      * @param {string} key Key to identify the message/event.
-     * @param {string} wildcard Wilcard received from on method.
+     * @param {string} wildcard Wildcard received from on method.
      */
     public keyMatch(key: string, wildcard: string) {
 

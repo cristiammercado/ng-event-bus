@@ -6,13 +6,16 @@ var operators_1 = require("rxjs/operators");
  * Main library class.
  *
  * @since 0.0.1
- * @version 1.0.4
+ * @version 1.0.5
  */
 var NgEventBus = /** @class */ (function () {
     /**
      * Constructor for this class: Initializes event bus.
      */
     function NgEventBus() {
+        /**
+         * Key message separator.
+         */
         this.separator = ':';
         this._eventBus = new rxjs_1.Subject();
     }
@@ -20,7 +23,7 @@ var NgEventBus = /** @class */ (function () {
      * Validates key matching.
      *
      * @param {string} key Key to identify the message/event.
-     * @param {string} wildcard Wilcard received from on method.
+     * @param {string} wildcard Wildcard received from on method.
      */
     NgEventBus.prototype.keyMatch = function (key, wildcard) {
         var w = '*';
