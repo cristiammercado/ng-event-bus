@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
@@ -38,5 +38,8 @@
     "ts-node": "^7.0.1",
     "typescript": "^3.7.3",
     "uuid": "^3.3.3"
+  },
+  "engines": {
+    "node": ">= 8"
   }
 }
