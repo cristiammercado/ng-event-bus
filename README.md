@@ -2,6 +2,8 @@
 
 RxJS-based message/event bus service for Angular apps inspired by [NgRadio](https://github.com/govorov/ng-radio). Inject it in your application module. You can check [npm page](https://www.npmjs.com/package/ng-event-bus).
 
+[![Build Status](https://travis-ci.com/cristiammercado/ng-event-bus.svg?branch=master)](https://travis-ci.com/cristiammercado/ng-event-bus)
+
 ## Installation
 
 `npm install --save ng-event-bus`
