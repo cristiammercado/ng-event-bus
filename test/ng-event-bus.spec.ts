@@ -5,15 +5,15 @@ describe('NgEventBus works as expected', () => {
 
     const generateMessages = () => {
         return {
-            ch1: uuid.v4(),
-            ch2: uuid.v4(),
-            ch3: uuid.v4(),
-            ch4: uuid.v4(),
-            ch5: uuid.v4(),
-            ch6: uuid.v4(),
-            ch7: uuid.v4(),
-            ch8: uuid.v4(),
-            ch9: uuid.v4(),
+            ch1: uuid(),
+            ch2: uuid(),
+            ch3: uuid(),
+            ch4: uuid(),
+            ch5: uuid(),
+            ch6: uuid(),
+            ch7: uuid(),
+            ch8: uuid(),
+            ch9: uuid(),
         };
     };
 
@@ -85,7 +85,7 @@ describe('NgEventBus works as expected', () => {
         matchPairs.forEach((pair) => {
             let cast = pair[0];
             let wild = pair[1];
-            values[cast] = uuid.v4();
+            values[cast] = uuid();
 
             eventBus.cast(cast, values[cast]);
             eventBus.on(wild).subscribe((receivedValue) => {
