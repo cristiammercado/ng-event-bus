@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
@@ -11,7 +11,7 @@
   "types": "dist/ng_event_bus.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/tsc -d ./src/ng_event_bus.ts --lib es6 --outDir ./dist",
-    "test": "./node_modules/.bin/jasmine-ts --config=jasmine.json"
+    "test": "nyc jasmine-ts --config=jasmine.json"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "jasmine-ts": "^0.3.0",
     "mem": "^6.1.0",
     "minimist": "^1.2.5",
-    "ts-node": "^8.7.0",
+    "nyc": "^15.0.1",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3",
     "uuid": "^7.0.3"
