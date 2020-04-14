@@ -22,23 +22,29 @@
     "message-bus",
     "event-bus",
     "events",
+    "bus",
     "rxjs"
   ],
-  "author": "Cristiam Mercado <contact@cristiammercado.com>",
+  "author": {
+    "name": "Cristiam Mercado",
+    "email": "contact@cristiammercado.com",
+    "url": "https://www.cristiammercado.com"
+  },
   "license": "MIT",
   "dependencies": {
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.5.9",
+    "@types/jasmine": "^3.5.10",
     "jasmine": "^3.5.0",
     "jasmine-core": "^3.5.0",
     "jasmine-ts": "^0.3.0",
-    "mem": "^6.0.1",
+    "mem": "^6.1.0",
     "minimist": "^1.2.5",
     "ts-node": "^8.7.0",
+    "ts-node": "^8.8.2",
     "typescript": "^3.8.3",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.3"
   },
   "engines": {
     "node": ">= 8"
