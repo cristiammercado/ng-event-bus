@@ -3,6 +3,7 @@
 RxJS-based message/event bus service for Angular apps inspired by [NgRadio](https://github.com/govorov/ng-radio). Inject it in your application module. You can check [npm page](https://www.npmjs.com/package/ng-event-bus).
 
 [![Build Status](https://travis-ci.com/cristiammercado/ng-event-bus.svg?branch=master)](https://travis-ci.com/cristiammercado/ng-event-bus)
+[![npm version](https://badge.fury.io/js/ng-event-bus.svg)](https://badge.fury.io/js/ng-event-bus)
 
 ## Installation
 
@@ -16,7 +17,6 @@ First, import it:
 
 Then, if using Angular, inject it as a service (do not forget about providers):
 
-
 ```
 ......
 import { NgEventBus } from 'ng-event-bus';
@@ -24,7 +24,7 @@ import { NgEventBus } from 'ng-event-bus';
 
 @NgModule({
     imports:[
-		......
+    	.......
     ],
     providers: [
     	.......
@@ -99,6 +99,24 @@ These strings will match:
 * `on('*:b:*' , callback)` can subscribe to `cast('a:b:c', ...)`
 
 * `on('a:*:*' , callback)` can subscribe to `cast('a:b:c', ...)`
+
+## Release History & Changelog
+
+See the [Releases](https://github.com/cristiammercado/ng-event-bus/releases) page for a list of all releases, including changes.
+
+## Help / Support
+
+If you run into any issues, please email me at [contact@cristiammercado.com](mailto:contact@cristiammercado.com) or you can use the contact form in [my page](https://www.cristiammercado.com/en/#contact).
+
+For bug reports, please [open an issue on GitHub](https://github.com/cristiammercado/ng-event-bus/issues/new).
+
+## Contributing
+
+1. [Fork it](https://github.com/cristiammercado/ng-event-bus).
+2. Create your feature branch (`git checkout -b my-new-feature`).
+3. Commit your changes (`git commit -am 'Added some feature'`).
+4. Push to the branch (`git push origin my-new-feature`).
+5. Create a new Pull Request.
 
 ## License
 
