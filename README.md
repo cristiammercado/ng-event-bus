@@ -100,6 +100,14 @@ These strings will match:
 
 * `on('a:*:*' , callback)` can subscribe to `cast('a:b:c', ...)`
 
+### Need to unsubscribe (observable)?
+
+Yes, in the normal scenario usage it's necessary you unsubscribe from the observable to avoid memory leaks. That happens because the library exposes an infinite observable. That's no exactly related to the library, but in the way in which the observables work in RxJS.
+
+However, there're ways that you don't need to unsubscribe, for example if you use `.first()` in the pipe of the observable because using this method would turn it into a finite observable (It would apply in your case if you're just waiting for a one-time event).
+
+I recommend you to read this [stackoverflow answer](https://stackoverflow.com/questions/50629357/rxjs-angular-unsubscribe-from-subjects/50633482#50633482) about a similar question!
+
 ## Release History & Changelog
 
 See the [Releases](https://github.com/cristiammercado/ng-event-bus/releases) page for a list of all releases, including changes.
