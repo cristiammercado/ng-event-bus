@@ -94,4 +94,11 @@ describe('NgEventBus works as expected', () => {
         });
     });
 
+    it('Cast invalid', () => {
+        let eventBus = new NgEventBus();
+        let key = '';
+
+        expect(() => eventBus.cast(key)).toThrowError('key must be a string and must not be empty');
+    });
+
 });
