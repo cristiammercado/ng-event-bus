@@ -5,8 +5,9 @@ var operators_1 = require("rxjs/operators");
 /**
  * Main library class.
  *
+ * @author Cristiam Mercado
  * @since 0.0.1
- * @version 1.0.5
+ * @version 1.1.1
  */
 var NgEventBus = /** @class */ (function () {
     /**
@@ -54,10 +55,11 @@ var NgEventBus = /** @class */ (function () {
      *
      * @param {string} key Key to identify the message/event.
      * @param {any} [data] Optional: Additional data sent with the message/event.
+     * @throws {Error} Argument key must be a string and must not be empty.
      */
     NgEventBus.prototype.cast = function (key, data) {
         if (typeof key !== 'string' || !key.length) {
-            throw 'key must be a string and mustn\'t be empty.';
+            throw new Error('key must be a string and must not be empty');
         }
         this._eventBus.next({ key: key, data: data });
     };
