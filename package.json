@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
@@ -11,7 +11,7 @@
   "types": "dist/ng_event_bus.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/tsc -d ./src/ng_event_bus.ts --lib es6 --outDir ./dist",
-    "test": "./node_modules/.bin/jasmine-ts --config=jasmine.json"
+    "test": "nyc jasmine-ts --config=jasmine.json"
   },
   "repository": {
     "type": "git",
@@ -22,25 +22,31 @@
     "message-bus",
     "event-bus",
     "events",
+    "bus",
     "rxjs"
   ],
-  "author": "Cristiam Mercado <contact@cristiammercado.com>",
+  "author": {
+    "name": "Cristiam Mercado",
+    "email": "contact@cristiammercado.com",
+    "url": "https://www.cristiammercado.com/en"
+  },
   "license": "MIT",
   "dependencies": {
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.5.9",
+    "@types/jasmine": "^3.5.10",
     "jasmine": "^3.5.0",
     "jasmine-core": "^3.5.0",
     "jasmine-ts": "^0.3.0",
-    "mem": "^6.0.1",
+    "mem": "^6.1.0",
     "minimist": "^1.2.5",
-    "ts-node": "^8.7.0",
+    "nyc": "^15.1.0",
+    "ts-node": "^8.10.2",
     "typescript": "^3.8.3",
-    "uuid": "^7.0.2"
+    "uuid": "^8.1.0"
   },
   "engines": {
-    "node": ">= 8"
+    "node": ">= 10"
   }
 }

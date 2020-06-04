@@ -2,8 +2,9 @@ import { Observable } from 'rxjs';
 /**
  * Main library class.
  *
+ * @author Cristiam Mercado
  * @since 0.0.1
- * @version 1.0.5
+ * @version 1.1.1
  */
 export declare class NgEventBus {
     /**
@@ -30,6 +31,7 @@ export declare class NgEventBus {
      *
      * @param {string} key Key to identify the message/event.
      * @param {any} [data] Optional: Additional data sent with the message/event.
+     * @throws {Error} Argument key must be a string and must not be empty.
      */
     cast(key: string, data?: any): void;
     /**
