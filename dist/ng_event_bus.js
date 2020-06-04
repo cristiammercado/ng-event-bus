@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.NgEventBus = void 0;
 var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 /**
