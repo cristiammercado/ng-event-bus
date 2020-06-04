@@ -1,18 +1,20 @@
 language: node_js
+dist: bionic
+arch: amd64
+cache: npm
 os:
   - linux
   - osx
   - windows
 sudo: false
 node_js:
+  - 14
   - 13
   - 12
   - 11
   - 10
-  - 9
-  - 8
 install:
   - npm install
 script:
-  - npm run test
   - npm run build
+  - npm run test
