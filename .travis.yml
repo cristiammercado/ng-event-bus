@@ -6,7 +6,6 @@ os:
   - linux
   - osx
   - windows
-sudo: false
 node_js:
   - 15
   - 14
