@@ -1,42 +1,35 @@
 import { NgEventBus } from './ng-event-bus';
+import { Utils } from './utils';
+import { MetaData } from './meta-data';
 
-const uuid = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c: string) => {
-    // tslint:disable-next-line:no-bitwise
-    const r = (Math.random() * 16) | 0;
-    // tslint:disable-next-line:no-bitwise
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+const generateMessages = () => {
+  return {
+    ch1: Utils.uuid(),
+    ch2: Utils.uuid(),
+    ch3: Utils.uuid(),
+    ch4: Utils.uuid(),
+    ch5: Utils.uuid(),
+    ch6: Utils.uuid(),
+    ch7: Utils.uuid(),
+    ch8: Utils.uuid(),
+    ch9: Utils.uuid(),
+  };
 };
 
-describe('ng-event-bus works as expected', () => {
+describe('ng-event-bus', () => {
+
   it('should create an instance', () => {
     expect(new NgEventBus()).toBeTruthy();
   });
-
-  const generateMessages = () => {
-    return {
-      ch1: uuid(),
-      ch2: uuid(),
-      ch3: uuid(),
-      ch4: uuid(),
-      ch5: uuid(),
-      ch6: uuid(),
-      ch7: uuid(),
-      ch8: uuid(),
-      ch9: uuid(),
-    };
-  };
 
   it('Submit to channel', () => {
     const eventBus: NgEventBus = new NgEventBus();
     const channelMessages: any = generateMessages();
 
     // subscribe to message
-    Object.keys(channelMessages).forEach((channel) => {
-      eventBus.on(channel).subscribe((data: any) => {
-        expect(data).toEqual(channelMessages[channel]);
+    Object.keys(channelMessages).forEach((channel: string) => {
+      eventBus.on(channel).subscribe((data: MetaData) => {
+        expect(data.data).toEqual(channelMessages[channel]);
       });
     });
 
@@ -73,14 +66,14 @@ describe('ng-event-bus works as expected', () => {
     const eventBus: NgEventBus = new NgEventBus();
 
     matchPairs.forEach((pair) => {
-      let cast = pair[0];
-      let wild = pair[1];
+      const cast = pair[0];
+      const wild = pair[1];
       expect(eventBus.keyMatch(cast, wild)).toEqual(true);
     });
 
     dontMatchPairs.forEach((pair) => {
-      let cast = pair[0];
-      let wild = pair[1];
+      const cast = pair[0];
+      const wild = pair[1];
       expect(eventBus.keyMatch(cast, wild)).toEqual(false);
     });
   });
@@ -89,21 +82,21 @@ describe('ng-event-bus works as expected', () => {
     const eventBus: NgEventBus = new NgEventBus();
     const values: any = {};
 
-    matchPairs.forEach((pair) => {
-      let cast = pair[0];
-      let wild = pair[1];
-      values[cast] = uuid();
+    matchPairs.forEach((pair: Array<string>) => {
+      const cast = pair[0];
+      const wild = pair[1];
+      values[cast] = Utils.uuid();
 
       eventBus.cast(cast, values[cast]);
-      eventBus.on(wild).subscribe((receivedValue: any) => {
-        expect(receivedValue).toEqual(values[cast]);
+      eventBus.on(wild).subscribe((receivedValue: MetaData) => {
+        expect(receivedValue.data).toEqual(values[cast]);
       });
     });
   });
 
   it('Cast invalid', () => {
     const eventBus: NgEventBus = new NgEventBus();
-    let key = '';
+    const key = '';
 
     expect(() => eventBus.cast(key)).toThrowError('key parameter must be a string and must not be empty');
   });

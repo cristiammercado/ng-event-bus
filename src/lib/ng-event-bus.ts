@@ -2,6 +2,7 @@ import { Observable, Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 import { IEventBusMessage } from './i-event-bus-message';
+import { MetaData } from './meta-data';
 
 /**
  * Main library class.
@@ -11,6 +12,7 @@ import { IEventBusMessage } from './i-event-bus-message';
  * @version 2.0.0
  */
 export class NgEventBus {
+
   /**
    * Main observable to multicast to all observers.
    */
@@ -76,11 +78,14 @@ export class NgEventBus {
    * @throws {Error} key parameter must be a string and must not be empty.
    */
   public cast(key: string, data?: any): void {
-    if (!key.length) {
+
+    if (!key.trim().length) {
       throw new Error('key parameter must be a string and must not be empty');
     }
 
-    this.eventBus.next({ key, data });
+    const metadata: MetaData = new MetaData(key, data);
+
+    this.eventBus.next({ key, data, metadata });
   }
 
   /**
@@ -90,10 +95,10 @@ export class NgEventBus {
    *
    * @return Observable you can subscribe to listen messages/events.
    */
-  public on<T>(key: string): Observable<T> {
+  public on<T>(key: string): Observable<MetaData> {
     return this.eventBus.asObservable().pipe(
       filter((event: IEventBusMessage) => this.keyMatch(event.key, key)),
-      map((event: any) => event.data as T)
+      map((event: IEventBusMessage) => event.metadata),
     );
   }
 }

@@ -1,3 +1,4 @@
+import { MetaData } from './meta-data';
 /**
  * Interface of the messages sent through the events bus.
  *
@@ -14,4 +15,8 @@ export interface IEventBusMessage {
      * Data associated to message.
      */
     data?: any;
+    /**
+     * Full message metadata.
+     */
+    metadata: MetaData;
 }

@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { MetaData } from './meta-data';
 /**
  * Main library class.
  *
@@ -43,5 +44,5 @@ export declare class NgEventBus {
      *
      * @return Observable you can subscribe to listen messages/events.
      */
-    on<T>(key: string): Observable<T>;
+    on<T>(key: string): Observable<MetaData>;
 }

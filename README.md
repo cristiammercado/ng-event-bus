@@ -18,22 +18,20 @@ First, import it:
 Then, inject it as a service (do not forget about providers) in your Angular application:
 
 ```
-......
 import { NgEventBus } from 'ng-event-bus';
-......
 
 @NgModule({
     imports:[
-    	.......
+        ...
     ],
     providers: [
-    	.......
+        ...,
         NgEventBus,
-        .......
+        ...
     ],
 ```
 
-`constructor(private eventBus: NgEventBus){...}`
+`constructor(private eventBus: NgEventBus) { ... }`
 
 Since you have `NgEventBus` instance in your app, you can use these methods for passing messages:
 
@@ -41,6 +39,14 @@ Since you have `NgEventBus` instance in your app, you can use these methods for 
 
 * `this.eventBus.on(pattern)` - returns observable you can subscribe to listen events.
 
+Where:
+
+ - `key` must be a string and must not be empty, otherwise it will throw an exception. 
+ - `data` is optional and can be any type of object.
+ - `pattern` must be a string and must not be empty. 
+ 
+### Patterns
+ 
 Patterns may contain multiple segments split by `:`. Use this feature to create namespaces for messages you cast. You can use `*` in `pattern` to subscribe to any matching segment, or use `**` to subscribe to all segments, starting from particular position.
 
 For example, you can use `on('error:*')` and subscribe to all errors, including something like `error:http` or `error:internal` and so on:
@@ -50,24 +56,57 @@ this.eventBus.cast('app:start',     'started');
 this.eventBus.cast('message:greet', 'Hi!');
 this.eventBus.cast('message:bye',   'Bye!');
 
-this.eventBus.on('app:start').subscribe((message)=>{
-	console.log(message); //will receive 'started' only
+this.eventBus.on('app:start').subscribe((meta: MetaData) => {
+    console.log(meta.data); // will receive 'started' only
 });
 
-this.eventBus.on('message:greet').subscribe((message)=>{
-	console.log(message); //will receive 'Hi!'
+this.eventBus.on('message:greet').subscribe((meta: MetaData) => {
+    console.log(meta.data); // will receive 'Hi!'
 });
 
-this.eventBus.on('message:bye').subscribe((message)=>{
-	console.log(message); //will receive 'Bye!'
+this.eventBus.on('message:bye').subscribe((meta: MetaData) => {
+    console.log(meta.data); // will receive 'Bye!'
 });
 
-this.eventBus.on('message:*').subscribe((message)=>{
-	console.log(message); //will receive both 'Hi!' and 'Bye!'
+this.eventBus.on('message:*').subscribe((meta: MetaData) => {
+    console.log(meta.data); // will receive both 'Hi!' and 'Bye!'
 });
 
-this.eventBus.on('**').subscribe((message)=>{
-	console.log(message); //will receive all messages: 'started', 'Hi!' and 'Bye!'
+this.eventBus.on('**').subscribe((meta: MetaData) => {
+    console.log(meta.data); // will receive all messages: 'started', 'Hi!' and 'Bye!'
+});
+
+```
+
+### MetaData (Breaking change in v2.x.x)
+
+When you subscribe to the observable, you can optionally get an instance of `MetaData` class. This instance contains information related to the emission of the event through the bus. The properties of this instance are:
+
+ - `id`: A unique identifier of the message sent through the events bus.
+ - `key`: Original key associated to the message.
+ - `data`: Data associated to message. It's optional.
+ - `timestamp`: Time in milliseconds in which the message was generated.
+ 
+```
+this.eventBus.cast('app:start', 'started');
+
+this.eventBus.on('app:start').subscribe((meta: MetaData) => {
+    console.log(meta.id);           // will print "d9c31eb0-b3f3-4764-a96d-6a703112a696"
+    console.log(meta.key);          // will print "app:start"
+    console.log(meta.data);         // will print "started"
+    console.log(meta.timestamp);    // will print 1605934473553
+});
+
+```
+
+```
+this.eventBus.cast('message:bye', {message: 'bye'});
+
+this.eventBus.on('**').subscribe((meta: MetaData) => {
+    console.log(meta.id);           // will print "4945f28c-d2a5-4738-b7d1-f3df8f08422c"
+    console.log(meta.key);          // will print "message:bye"
+    console.log(meta.data);         // will print {message: 'bye'}
+    console.log(meta.timestamp);    // will print 1605934709116
 });
 
 ```
@@ -76,25 +115,25 @@ this.eventBus.on('**').subscribe((message)=>{
 
 These strings will match:
 
-* `on('**'    , callback)` can subscribe to any message with any segments count
+ - `on('**'    ).suscribe` can subscribe to any message with any segments count
 
-* `on('a'     , callback)` can subscribe to `cast('a', ...)`
+ - `on('a'     ).suscribe` can subscribe to `cast('a', ...)`
 
-* `on('a:b'   , callback)` can subscribe to `cast('a:b', ...)`
+ - `on('a:b'   ).suscribe` can subscribe to `cast('a:b', ...)`
 
-* `on('a:b:c' , callback)` can subscribe to `cast('a:b:c', ...)`
+ - `on('a:b:c' ).suscribe` can subscribe to `cast('a:b:c', ...)`
 
-* `on('a:**'  , callback)` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:c:d:e:f', ...)`
+ - `on('a:**'  ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:c:d:e:f', ...)`
 
-* `on('a:*:*' , callback)` can subscribe to `cast('a:b:c', ...)`, `cast('a:f:g', ...)`, `cast('a:n:m', ...)`
+ - `on('a:*:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:f:g', ...)`, `cast('a:n:m', ...)`
 
-* `on('a:b:*' , callback)` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:d', ...)`, but not `cast('a:b', ...)`
+ - `on('a:b:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:d', ...)`, but not `cast('a:b', ...)`
 
-* `on('a:b:**', callback)` can subscribe to `cast('a:b:c',. ..)`
+ - `on('a:b:**').suscribe` can subscribe to `cast('a:b:c',. ..)`
 
-* `on('*:b:*' , callback)` can subscribe to `cast('a:b:c', ...)`
+ - `on('*:b:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`
 
-* `on('a:*:*' , callback)` can subscribe to `cast('a:b:c', ...)`
+ - `on('a:*:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`
 
 ### Need to unsubscribe (observable)?
 
@@ -104,7 +143,7 @@ However, there are ways that you don't need to unsubscribe, for example if you u
 
 I recommend you to read this [stackoverflow answer](https://stackoverflow.com/questions/50629357/rxjs-angular-unsubscribe-from-subjects/50633482#50633482) about a similar question.
 
-## Release History & Changelog
+## Release history & changelog
 
 See the [Releases](https://github.com/cristiammercado/ng-event-bus/releases) page for a list of all releases, including changes.
 

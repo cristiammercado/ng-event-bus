@@ -1,6 +1,77 @@
 import { Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
+/* tslint:disable:variable-name no-bitwise */
+/**
+ * Utilitary class.
+ *
+ * @author Cristiam Mercado
+ * @since 2.0.0
+ * @version 2.0.0
+ */
+class Utils {
+    /**
+     * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
+     * guaranteed to be a high-quality RNG.
+     *
+     * @return UUID version 4.
+     */
+    static uuid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = (Math.random() * 16) | 0;
+            const v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
+    }
+}
+
+/* tslint:disable:variable-name */
+/**
+ * Metadata of the messages sent through the events bus.
+ *
+ * @author Cristiam Mercado
+ * @since 2.0.0
+ * @version 2.0.0
+ */
+class MetaData {
+    /**
+     * Constructor for this class.
+     *
+     * @param key Original key associated to the message sent through the events bus.
+     * @param [data] Optional: Additional data sent with the message.
+     */
+    constructor(key, data) {
+        this._id = Utils.uuid();
+        this._key = key;
+        this._data = data;
+        this._timestamp = new Date().getTime();
+    }
+    /**
+     * Gets unique identifier of the message sent through the events bus.
+     */
+    get id() {
+        return this._id;
+    }
+    /**
+     * Original key associated to the message.
+     */
+    get key() {
+        return this._key;
+    }
+    /**
+     * Data associated to message. It's optional.
+     */
+    get data() {
+        return this._data;
+    }
+    /**
+     * Gets the time in milliseconds in which the message was generated.
+     */
+    get timestamp() {
+        return this._timestamp;
+    }
+}
+
 /**
  * Main library class.
  *
@@ -59,10 +130,11 @@ class NgEventBus {
      * @throws {Error} key parameter must be a string and must not be empty.
      */
     cast(key, data) {
-        if (!key.length) {
+        if (!key.trim().length) {
             throw new Error('key parameter must be a string and must not be empty');
         }
-        this.eventBus.next({ key, data });
+        const metadata = new MetaData(key, data);
+        this.eventBus.next({ key, data, metadata });
     }
     /**
      * Returns an observable you can subscribe to listen messages/events.
@@ -72,7 +144,7 @@ class NgEventBus {
      * @return Observable you can subscribe to listen messages/events.
      */
     on(key) {
-        return this.eventBus.asObservable().pipe(filter((event) => this.keyMatch(event.key, key)), map((event) => event.data));
+        return this.eventBus.asObservable().pipe(filter((event) => this.keyMatch(event.key, key)), map((event) => event.metadata));
     }
 }
 
