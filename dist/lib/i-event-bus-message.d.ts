@@ -2,8 +2,8 @@
  * Interface of the messages sent through the events bus.
  *
  * @author Cristiam Mercado
- * @since 1.0.5
- * @version 1.1.1
+ * @since 2.0.0
+ * @version 2.0.0
  */
 export interface IEventBusMessage {
     /**

@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":4,"metadata":{"NgEventBus":{"__symbolic":"class","members":{"__ctor__":[{"__symbolic":"constructor"}],"keyMatch":[{"__symbolic":"method"}],"cast":[{"__symbolic":"method"}],"on":[{"__symbolic":"method"}]}}},"origins":{"NgEventBus":"./lib/ng-event-bus"},"importAs":"ng-event-bus"}
