@@ -7,8 +7,6 @@
     "email": "contact@cristiammercado.com",
     "url": "https://github.com/cristiammercado/ng-event-bus/issues"
   },
-  "main": "dist/ng-event-bus.js",
-  "types": "dist/ng-event-bus.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cristiammercado/ng-event-bus.git"
@@ -27,7 +25,6 @@
     "url": "https://www.cristiammercado.com/en"
   },
   "license": "MIT",
-  "private": true,
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod",
@@ -42,7 +39,12 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.2",
     "@angular/cli": "~11.0.2",
+    "@angular/common": "~11.0.2",
+    "@angular/compiler": "~11.0.2",
     "@angular/compiler-cli": "~11.0.2",
+    "@angular/core": "~11.0.2",
+    "@angular/platform-browser": "~11.0.2",
+    "@angular/platform-browser-dynamic": "~11.0.2",
     "@types/jasmine": "~3.6.2",
     "@types/node": "~14.14.9",
     "codelyzer": "~6.0.1",
@@ -63,5 +65,6 @@
   },
   "engines": {
     "node": ">= 10"
-  }
+  },
+  "types": "ng-event-bus.d.ts"
 }
