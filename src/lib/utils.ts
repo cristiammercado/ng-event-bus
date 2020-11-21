@@ -8,7 +8,6 @@
  * @version 2.0.0
  */
 export class Utils {
-
   /**
    * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
    * guaranteed to be a high-quality RNG.
@@ -22,5 +21,4 @@ export class Utils {
       return v.toString(16);
     });
   }
-
 }

@@ -2,7 +2,6 @@ import { MetaData } from './meta-data';
 import { Utils } from './utils';
 
 describe('meta-data', () => {
-
   it('should create an instance', () => {
     expect(new MetaData('', '')).toBeTruthy();
   });
@@ -41,5 +40,4 @@ describe('meta-data', () => {
     expect(metaData.timestamp).toBeDefined();
     expect(metaData.timestamp).toEqual(jasmine.any(Number));
   });
-
 });

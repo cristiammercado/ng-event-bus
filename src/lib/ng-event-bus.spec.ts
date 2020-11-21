@@ -17,7 +17,6 @@ const generateMessages = () => {
 };
 
 describe('ng-event-bus', () => {
-
   it('should create an instance', () => {
     expect(new NgEventBus()).toBeTruthy();
   });

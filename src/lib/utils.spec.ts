@@ -1,7 +1,6 @@
 import { Utils } from './utils';
 
 describe('utils', () => {
-
   it('should create an instance', () => {
     expect(new Utils()).toBeTruthy();
   });
@@ -13,5 +12,4 @@ describe('utils', () => {
     expect(uuid).toEqual(jasmine.any(String));
     expect(uuid).toHaveSize(36);
   });
-
 });

@@ -12,7 +12,6 @@ import { MetaData } from './meta-data';
  * @version 2.0.0
  */
 export class NgEventBus {
-
   /**
    * Main observable to multicast to all observers.
    */
@@ -78,7 +77,6 @@ export class NgEventBus {
    * @throws {Error} key parameter must be a string and must not be empty.
    */
   public cast(key: string, data?: any): void {
-
     if (!key.trim().length) {
       throw new Error('key parameter must be a string and must not be empty');
     }
@@ -98,7 +96,7 @@ export class NgEventBus {
   public on<T>(key: string): Observable<MetaData> {
     return this.eventBus.asObservable().pipe(
       filter((event: IEventBusMessage) => this.keyMatch(event.key, key)),
-      map((event: IEventBusMessage) => event.metadata),
+      map((event: IEventBusMessage) => event.metadata)
     );
   }
 }

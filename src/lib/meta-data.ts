@@ -9,7 +9,6 @@ import { Utils } from './utils';
  * @version 2.0.0
  */
 export class MetaData {
-
   /**
    * A unique identifier of the message sent through the events bus.
    * @private
@@ -74,5 +73,4 @@ export class MetaData {
   public get timestamp(): number {
     return this._timestamp;
   }
-
 }

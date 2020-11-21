@@ -8,7 +8,6 @@ import { MetaData } from './meta-data';
  * @version 2.0.0
  */
 export interface IEventBusMessage {
-
   /**
    * Key to identify message.
    */
@@ -23,5 +22,4 @@ export interface IEventBusMessage {
    * Full message metadata.
    */
   metadata: MetaData;
-
 }
