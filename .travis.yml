@@ -1,17 +1,16 @@
 language: node_js
-dist: bionic
+dist: focal
 arch: amd64
 cache: npm
+addons:
+  chrome: stable
 os:
   - linux
   - osx
-  - windows
-sudo: false
 node_js:
+  - 15
   - 14
-  - 13
   - 12
-  - 11
   - 10
 install:
   - npm install

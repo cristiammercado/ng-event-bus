@@ -1,0 +1,44 @@
+{
+  "name": "ng-event-bus",
+  "version": "2.0.0",
+  "description": "RxJS-based message/event bus service for Angular.",
+  "homepage": "https://github.com/cristiammercado/ng-event-bus",
+  "bugs": {
+    "email": "contact@cristiammercado.com",
+    "url": "https://github.com/cristiammercado/ng-event-bus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiammercado/ng-event-bus.git"
+  },
+  "keywords": [
+    "angular",
+    "message-bus",
+    "event-bus",
+    "events",
+    "bus",
+    "rxjs"
+  ],
+  "author": {
+    "name": "Cristiam Mercado",
+    "email": "contact@cristiammercado.com",
+    "url": "https://www.cristiammercado.com/en"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "rxjs": "~6.6.3",
+    "tslib": "^2.0.0"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "types": "ng-event-bus.d.ts",
+  "main": "bundles/ng-event-bus.umd.js",
+  "module": "fesm2015/ng-event-bus.js",
+  "es2015": "fesm2015/ng-event-bus.js",
+  "esm2015": "esm2015/ng-event-bus.js",
+  "fesm2015": "fesm2015/ng-event-bus.js",
+  "typings": "ng-event-bus.d.ts",
+  "metadata": "ng-event-bus.metadata.json",
+  "sideEffects": false
+}
