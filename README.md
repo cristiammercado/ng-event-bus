@@ -7,17 +7,20 @@ RxJS-based message/event bus service for Angular apps inspired by [NgRadio](http
 
 ## Installation
 
-`npm install --save ng-event-bus`
+```bash
+npm install --save ng-event-bus
+```
 
 ## Usage
 
 First, import it:
 
-`import { NgEventBus } from 'ng-event-bus';`
-
+```js
+import { NgEventBus } from 'ng-event-bus';`
+```
 Then, inject it as a service (do not forget about providers) in your Angular application:
 
-```
+```js
 import { NgEventBus } from 'ng-event-bus';
 
 @NgModule({
@@ -31,7 +34,9 @@ import { NgEventBus } from 'ng-event-bus';
     ],
 ```
 
-`constructor(private eventBus: NgEventBus) { ... }`
+```js
+constructor(private eventBus: NgEventBus) { ... }
+```
 
 Since you have `NgEventBus` instance in your app, you can use these methods for passing messages:
 
@@ -51,7 +56,7 @@ Patterns may contain multiple segments split by `:`. Use this feature to create 
 
 For example, you can use `on('error:*')` and subscribe to all errors, including something like `error:http` or `error:internal` and so on:
 
-```
+```js
 this.eventBus.cast('app:start',     'started');
 this.eventBus.cast('message:greet', 'Hi!');
 this.eventBus.cast('message:bye',   'Bye!');
@@ -87,7 +92,7 @@ When you subscribe to the observable, you can optionally get an instance of `Met
  - `data`: Data associated to message. It's optional.
  - `timestamp`: Time in milliseconds in which the message was generated.
  
-```
+```js
 this.eventBus.cast('app:start', 'started');
 
 this.eventBus.on('app:start').subscribe((meta: MetaData) => {
@@ -99,7 +104,7 @@ this.eventBus.on('app:start').subscribe((meta: MetaData) => {
 
 ```
 
-```
+```js
 this.eventBus.cast('message:bye', {message: 'bye'});
 
 this.eventBus.on('**').subscribe((meta: MetaData) => {
