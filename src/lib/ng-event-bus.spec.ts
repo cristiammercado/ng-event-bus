@@ -1,18 +1,25 @@
 import { NgEventBus } from './ng-event-bus';
-import { Utils } from './utils';
 import { MetaData } from './meta-data';
+
+function uuid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c: string) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
 
 const generateMessages = () => {
   return {
-    ch1: Utils.uuid(),
-    ch2: Utils.uuid(),
-    ch3: Utils.uuid(),
-    ch4: Utils.uuid(),
-    ch5: Utils.uuid(),
-    ch6: Utils.uuid(),
-    ch7: Utils.uuid(),
-    ch8: Utils.uuid(),
-    ch9: Utils.uuid(),
+    ch1: uuid(),
+    ch2: uuid(),
+    ch3: uuid(),
+    ch4: uuid(),
+    ch5: uuid(),
+    ch6: uuid(),
+    ch7: uuid(),
+    ch8: uuid(),
+    ch9: uuid(),
   };
 };
 
@@ -84,7 +91,7 @@ describe('ng-event-bus', () => {
     matchPairs.forEach((pair: Array<string>) => {
       const cast = pair[0];
       const wild = pair[1];
-      values[cast] = Utils.uuid();
+      values[cast] = uuid();
 
       eventBus.cast(cast, values[cast]);
       eventBus.on(wild).subscribe((receivedValue: MetaData) => {
