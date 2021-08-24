@@ -3,7 +3,7 @@
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 2.0.0
+ * @version 3.0.0
  */
 export declare class MetaData {
     /**
@@ -49,4 +49,11 @@ export declare class MetaData {
      * Gets the time in milliseconds in which the message was generated.
      */
     get timestamp(): number;
+    /**
+     * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
+     * guaranteed to be a high-quality RNG.
+     *
+     * @return UUID version 4.
+     */
+    private uuid;
 }
