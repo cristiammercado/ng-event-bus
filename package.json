@@ -28,7 +28,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build --configuration production",
-    "test": "ng test --watch=false --codeCoverage",
+    "test": "ng test --watch=false --code-coverage",
     "prettier:write": "prettier -w \"./src/**/*.ts\"",
     "prettier:check": "prettier -l \"./src/**/*.ts\""
   },
