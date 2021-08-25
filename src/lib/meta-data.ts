@@ -1,12 +1,11 @@
 /* tslint:disable:variable-name */
-import { Utils } from './utils';
 
 /**
  * Metadata of the messages sent through the events bus.
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 2.0.0
+ * @version 3.0.0
  */
 export class MetaData {
   /**
@@ -40,7 +39,7 @@ export class MetaData {
    * @param [data] Optional: Additional data sent with the message.
    */
   constructor(key: string, data?: any) {
-    this._id = Utils.uuid();
+    this._id = this.uuid();
     this._key = key;
     this._data = data;
     this._timestamp = new Date().getTime();
@@ -72,5 +71,19 @@ export class MetaData {
    */
   public get timestamp(): number {
     return this._timestamp;
+  }
+
+  /**
+   * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
+   * guaranteed to be a high-quality RNG.
+   *
+   * @return UUID version 4.
+   */
+  private uuid(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c: string) => {
+      const r = (Math.random() * 16) | 0;
+      const v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
   }
 }

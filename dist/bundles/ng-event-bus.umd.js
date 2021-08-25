@@ -4,40 +4,13 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['ng-event-bus'] = {}, global.rxjs, global.rxjs.operators));
 }(this, (function (exports, rxjs, operators) { 'use strict';
 
-    /* tslint:disable:variable-name no-bitwise */
-    /**
-     * Utilitary class.
-     *
-     * @author Cristiam Mercado
-     * @since 2.0.0
-     * @version 2.0.0
-     */
-    var Utils = /** @class */ (function () {
-        function Utils() {
-        }
-        /**
-         * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
-         * guaranteed to be a high-quality RNG.
-         *
-         * @return UUID version 4.
-         */
-        Utils.uuid = function () {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                var r = (Math.random() * 16) | 0;
-                var v = c === 'x' ? r : (r & 0x3) | 0x8;
-                return v.toString(16);
-            });
-        };
-        return Utils;
-    }());
-
     /* tslint:disable:variable-name */
     /**
      * Metadata of the messages sent through the events bus.
      *
      * @author Cristiam Mercado
      * @since 2.0.0
-     * @version 2.0.0
+     * @version 3.0.0
      */
     var MetaData = /** @class */ (function () {
         /**
@@ -47,7 +20,7 @@
          * @param [data] Optional: Additional data sent with the message.
          */
         function MetaData(key, data) {
-            this._id = Utils.uuid();
+            this._id = this.uuid();
             this._key = key;
             this._data = data;
             this._timestamp = new Date().getTime();
@@ -92,6 +65,19 @@
             enumerable: false,
             configurable: true
         });
+        /**
+         * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
+         * guaranteed to be a high-quality RNG.
+         *
+         * @return UUID version 4.
+         */
+        MetaData.prototype.uuid = function () {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (Math.random() * 16) | 0;
+                var v = c === 'x' ? r : (r & 0x3) | 0x8;
+                return v.toString(16);
+            });
+        };
         return MetaData;
     }());
 
@@ -100,7 +86,7 @@
      *
      * @author Cristiam Mercado
      * @since 2.0.0
-     * @version 2.0.0
+     * @version 3.0.0
      */
     var NgEventBus = /** @class */ (function () {
         /**

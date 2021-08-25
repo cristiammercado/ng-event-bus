@@ -1,37 +1,13 @@
 import { Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-/* tslint:disable:variable-name no-bitwise */
-/**
- * Utilitary class.
- *
- * @author Cristiam Mercado
- * @since 2.0.0
- * @version 2.0.0
- */
-class Utils {
-    /**
-     * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
-     * guaranteed to be a high-quality RNG.
-     *
-     * @return UUID version 4.
-     */
-    static uuid() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-            const r = (Math.random() * 16) | 0;
-            const v = c === 'x' ? r : (r & 0x3) | 0x8;
-            return v.toString(16);
-        });
-    }
-}
-
 /* tslint:disable:variable-name */
 /**
  * Metadata of the messages sent through the events bus.
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 2.0.0
+ * @version 3.0.0
  */
 class MetaData {
     /**
@@ -41,7 +17,7 @@ class MetaData {
      * @param [data] Optional: Additional data sent with the message.
      */
     constructor(key, data) {
-        this._id = Utils.uuid();
+        this._id = this.uuid();
         this._key = key;
         this._data = data;
         this._timestamp = new Date().getTime();
@@ -70,6 +46,19 @@ class MetaData {
     get timestamp() {
         return this._timestamp;
     }
+    /**
+     * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
+     * guaranteed to be a high-quality RNG.
+     *
+     * @return UUID version 4.
+     */
+    uuid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = (Math.random() * 16) | 0;
+            const v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
+    }
 }
 
 /**
@@ -77,7 +66,7 @@ class MetaData {
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 2.0.0
+ * @version 3.0.0
  */
 class NgEventBus {
     /**

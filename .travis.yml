@@ -8,10 +8,10 @@ os:
   - linux
   - osx
 node_js:
+  - 16
   - 15
   - 14
   - 12
-  - 10
 install:
   - npm install
 script:

@@ -1,1 +1,0 @@
-{"moduleName":null,"summaries":[{"symbol":{"__symbol":0,"members":[]},"metadata":{"__symbolic":"class","members":{"__ctor__":[{"__symbolic":"constructor"}],"keyMatch":[{"__symbolic":"method"}],"cast":[{"__symbolic":"method"}],"on":[{"__symbolic":"method"}]}}}],"symbols":[{"__symbol":0,"name":"NgEventBus","filePath":"./ng-event-bus"}]}
