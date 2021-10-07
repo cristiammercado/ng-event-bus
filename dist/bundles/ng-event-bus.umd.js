@@ -1,8 +1,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs'), require('rxjs/operators')) :
     typeof define === 'function' && define.amd ? define('ng-event-bus', ['exports', 'rxjs', 'rxjs/operators'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['ng-event-bus'] = {}, global.rxjs, global.rxjs.operators));
-}(this, (function (exports, rxjs, operators) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["ng-event-bus"] = {}, global.rxjs, global.rxjs.operators));
+})(this, (function (exports, rxjs, operators) { 'use strict';
 
     /* tslint:disable:variable-name */
     /**
@@ -171,5 +171,5 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=ng-event-bus.umd.js.map
