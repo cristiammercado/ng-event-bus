@@ -8,8 +8,8 @@ os:
   - linux
   - osx
 node_js:
+  - 17
   - 16
-  - 15
   - 14
   - 12
 install:
