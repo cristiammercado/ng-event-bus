@@ -7,6 +7,8 @@ jobs:
   build:
     docker:
       - image: cimg/node:lts
+        environment:
+          CHROME_BIN: /usr/bin/google-chrome
     steps:
       - checkout
       - restore_cache:
