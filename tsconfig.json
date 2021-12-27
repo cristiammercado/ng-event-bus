@@ -4,6 +4,8 @@
     "baseUrl": "./",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -14,15 +16,13 @@
     "module": "es2020",
     "outDir": "./dist/out-tsc",
     "target": "es2017",
-    "declaration": true,
-    "declarationMap": true,
-    "inlineSources": true,
+    "declaration": false,
     "types": [
       "jasmine"
     ],
     "lib": [
       "dom",
-      "es2018"
+      "es2020"
     ],
     "paths": {
       "ng-event-bus": [

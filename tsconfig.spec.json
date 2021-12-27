@@ -7,10 +7,10 @@
     ]
   },
   "files": [
-    "./src/test.ts"
+    "src/test.ts"
   ],
   "include": [
-    "./src/**/*.spec.ts",
-    "./src/**/*.d.ts"
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
   ]
 }
