@@ -28,6 +28,8 @@ jobs:
           command: npm run test
       - store_test_results:
           path: ./coverage/junit-report.xml
+      - store_artifacts:
+          path: ./coverage/html-report
       - run:
           name: Build
           command: npm run build

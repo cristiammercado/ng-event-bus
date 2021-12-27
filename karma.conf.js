@@ -18,7 +18,7 @@ module.exports = (config) => {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, 'coverage'),
+      dir: require('path').join(__dirname, 'coverage', 'html-report'),
       subdir: '.',
       reporters: [
         { type: 'html' },
@@ -32,7 +32,8 @@ module.exports = (config) => {
       },
     },
     junitReporter: {
-      outputFile: require('path').join(__dirname, 'coverage', 'junit-report.xml')
+      outputFile: require('path').join(__dirname, 'coverage', 'junit-report.xml'),
+      useBrowserName: false
     },
     reporters: ['progress', 'kjhtml', 'junit'],
     port: 9876,
