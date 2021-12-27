@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
@@ -26,18 +26,31 @@
   },
   "license": "MIT",
   "dependencies": {
-    "rxjs": "~7.4.0",
-    "tslib": "^2.2.0"
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0"
   },
   "engines": {
     "node": ">= 12"
   },
   "types": "ng-event-bus.d.ts",
-  "main": "bundles/ng-event-bus.umd.js",
-  "module": "fesm2015/ng-event-bus.js",
-  "es2015": "fesm2015/ng-event-bus.js",
-  "esm2015": "esm2015/ng-event-bus.js",
-  "fesm2015": "fesm2015/ng-event-bus.js",
+  "module": "fesm2015/ng-event-bus.mjs",
+  "es2020": "fesm2020/ng-event-bus.mjs",
+  "esm2020": "esm2020/ng-event-bus.mjs",
+  "fesm2020": "fesm2020/ng-event-bus.mjs",
+  "fesm2015": "fesm2015/ng-event-bus.mjs",
   "typings": "ng-event-bus.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./ng-event-bus.d.ts",
+      "esm2020": "./esm2020/ng-event-bus.mjs",
+      "es2020": "./fesm2020/ng-event-bus.mjs",
+      "es2015": "./fesm2015/ng-event-bus.mjs",
+      "node": "./fesm2015/ng-event-bus.mjs",
+      "default": "./fesm2020/ng-event-bus.mjs"
+    }
+  },
   "sideEffects": false
 }
