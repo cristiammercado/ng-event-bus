@@ -63,6 +63,5 @@
   },
   "engines": {
     "node": ">= 14"
-  },
-  "types": "ng-event-bus.d.ts"
+  }
 }
