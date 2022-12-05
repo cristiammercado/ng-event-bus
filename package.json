@@ -63,5 +63,6 @@
   },
   "engines": {
     "node": ">= 14"
-  }
+  },
+  "types": "index.d.ts"
 }
