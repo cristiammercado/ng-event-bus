@@ -29,8 +29,9 @@
     "ng": "ng",
     "build": "ng build --configuration production",
     "test": "ng test --watch=false --code-coverage",
-    "prettier:write": "prettier -w \"./src/**/*.ts\"",
-    "prettier:check": "prettier -l \"./src/**/*.ts\""
+    "start": "ng serve",
+    "prettier:write": "prettier -w \"{src,projects}/**/*.{ts,tsx}\"",
+    "prettier:check": "prettier -l \"{src,projects}/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "rxjs": "~7.6.0"
