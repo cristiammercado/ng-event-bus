@@ -145,5 +145,6 @@ class NgEventBus {
  * Generated bundle index. Do not edit.
  */
 
-export { NgEventBus };
+export { MetaData, NgEventBus };
+//# sourceMappingURL=ng-event-bus.mjs.map
 //# sourceMappingURL=ng-event-bus.mjs.map

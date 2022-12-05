@@ -1,5 +1,3 @@
-/**
- * Generated bundle index. Do not edit.
- */
-/// <amd-module name="ng-event-bus" />
-export * from './public-api';
+export { NgEventBus } from './lib/ng-event-bus';
+export { MetaData } from './lib/meta-data';
+export { IEventBusMessage } from './lib/i-event-bus-message';
