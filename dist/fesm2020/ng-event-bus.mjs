@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 4.0.0
+ * @version 5.0.1
  */
 class MetaData {
     /**
@@ -66,7 +66,7 @@ class MetaData {
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.0.0
+ * @version 5.0.1
  */
 class NgEventBus {
     /**
@@ -146,5 +146,4 @@ class NgEventBus {
  */
 
 export { MetaData, NgEventBus };
-//# sourceMappingURL=ng-event-bus.mjs.map
 //# sourceMappingURL=ng-event-bus.mjs.map
