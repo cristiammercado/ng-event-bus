@@ -8,6 +8,7 @@ jobs:
   build:
     docker:
       - image: cimg/node:lts-browsers
+    resource_class: large
     steps:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
