@@ -5,7 +5,7 @@
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 4.0.0
+ * @version 5.0.1
  */
 export class MetaData {
   /**
