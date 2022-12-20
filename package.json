@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
@@ -34,19 +34,19 @@
     "prettier:check": "prettier -l \"{src,projects}/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "rxjs": "~7.6.0"
+    "rxjs": "~7.8.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~15.0.2",
-    "@angular/cli": "~15.0.2",
-    "@angular/common": "~15.0.2",
-    "@angular/compiler": "~15.0.2",
-    "@angular/compiler-cli": "~15.0.2",
-    "@angular/core": "~15.0.2",
-    "@angular/platform-browser": "~15.0.2",
-    "@angular/platform-browser-dynamic": "~15.0.2",
+    "@angular-devkit/build-angular": "~15.0.4",
+    "@angular/cli": "~15.0.4",
+    "@angular/common": "~15.0.4",
+    "@angular/compiler": "~15.0.4",
+    "@angular/compiler-cli": "~15.0.4",
+    "@angular/core": "~15.0.4",
+    "@angular/platform-browser": "~15.0.4",
+    "@angular/platform-browser-dynamic": "~15.0.4",
     "@types/jasmine": "~4.3.1",
-    "@types/node": "~18.11.10",
+    "@types/node": "~18.11.17",
     "jasmine-core": "~4.5.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.1",
@@ -55,8 +55,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "karma-junit-reporter": "~2.0.1",
-    "ng-packagr": "~15.0.1",
-    "prettier": "~2.8.0",
+    "ng-packagr": "~15.0.3",
+    "prettier": "~2.8.1",
     "tslib": "~2.4.1",
     "typescript": "~4.8.4",
     "zone.js": "~0.12.0"
