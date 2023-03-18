@@ -5,7 +5,7 @@ import { MetaData } from './meta-data';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
 export interface IEventBusMessage {
   /**
@@ -21,5 +21,5 @@ export interface IEventBusMessage {
   /**
    * Full message metadata.
    */
-  metadata: MetaData;
+  metadata: MetaData<any>;
 }
