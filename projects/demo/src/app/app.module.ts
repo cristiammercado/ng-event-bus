@@ -4,9 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgEventBus } from '../../../../src';
 
 import { AppComponent } from './app.component';
+import { AnotherComponent } from './another/another.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AnotherComponent],
   imports: [BrowserModule],
   providers: [NgEventBus],
   bootstrap: [AppComponent],
