@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
 class MetaData {
     /**
@@ -66,7 +66,7 @@ class MetaData {
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
 class NgEventBus {
     /**
@@ -82,7 +82,7 @@ class NgEventBus {
     /**
      * Validates key matching.
      *
-     * @param  key Key to identify the message/event.
+     * @param key Key to identify the message/event.
      * @param wildcard Wildcard received from on method.
      *
      * @return true if key matches, false otherwise.
@@ -123,7 +123,7 @@ class NgEventBus {
             throw new Error('key parameter must be a string and must not be empty');
         }
         const metadata = new MetaData(key, data);
-        this.eventBus.next({ key, data, metadata });
+        this.eventBus.next({ key, metadata });
     }
     /**
      * Returns an observable you can subscribe to listen messages/events.
@@ -146,5 +146,4 @@ class NgEventBus {
  */
 
 export { MetaData, NgEventBus };
-//# sourceMappingURL=ng-event-bus.mjs.map
 //# sourceMappingURL=ng-event-bus.mjs.map

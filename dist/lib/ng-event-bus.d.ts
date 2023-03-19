@@ -5,7 +5,7 @@ import { MetaData } from './meta-data';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
 export declare class NgEventBus {
     /**
@@ -23,7 +23,7 @@ export declare class NgEventBus {
     /**
      * Validates key matching.
      *
-     * @param  key Key to identify the message/event.
+     * @param key Key to identify the message/event.
      * @param wildcard Wildcard received from on method.
      *
      * @return true if key matches, false otherwise.
@@ -36,7 +36,7 @@ export declare class NgEventBus {
      * @param  [data] Optional: Additional data sent with the message/event.
      * @throws {Error} key parameter must be a string and must not be empty.
      */
-    cast(key: string, data?: any): void;
+    cast<T>(key: string, data?: T): void;
     /**
      * Returns an observable you can subscribe to listen messages/events.
      *
@@ -44,5 +44,5 @@ export declare class NgEventBus {
      *
      * @return Observable you can subscribe to listen messages/events.
      */
-    on<T>(key: string): Observable<MetaData>;
+    on<T>(key: string): Observable<MetaData<T>>;
 }

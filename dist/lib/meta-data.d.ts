@@ -3,9 +3,9 @@
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
-export declare class MetaData {
+export declare class MetaData<T = any> {
     /**
      * A unique identifier of the message sent through the events bus.
      * @private
@@ -20,7 +20,7 @@ export declare class MetaData {
      * Data associated to message. It's optional.
      * @private
      */
-    private readonly _data;
+    private readonly _data?;
     /**
      * Time in milliseconds in which the message was generated.
      * @private
@@ -32,7 +32,7 @@ export declare class MetaData {
      * @param key Original key associated to the message sent through the events bus.
      * @param [data] Optional: Additional data sent with the message.
      */
-    constructor(key: string, data?: any);
+    constructor(key: string, data?: T);
     /**
      * Gets unique identifier of the message sent through the events bus.
      */
@@ -44,7 +44,7 @@ export declare class MetaData {
     /**
      * Data associated to message. It's optional.
      */
-    get data(): any;
+    get data(): T | undefined;
     /**
      * Gets the time in milliseconds in which the message was generated.
      */
