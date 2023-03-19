@@ -5,18 +5,13 @@ import { MetaData } from './meta-data';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
 export interface IEventBusMessage {
   /**
    * Key to identify message.
    */
   key: string;
-
-  /**
-   * Data associated to message.
-   */
-  data?: any;
 
   /**
    * Full message metadata.

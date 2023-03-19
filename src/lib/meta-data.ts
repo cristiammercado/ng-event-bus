@@ -5,9 +5,9 @@
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
-export class MetaData {
+export class MetaData<T = any> {
   /**
    * A unique identifier of the message sent through the events bus.
    * @private
@@ -24,7 +24,7 @@ export class MetaData {
    * Data associated to message. It's optional.
    * @private
    */
-  private readonly _data: any;
+  private readonly _data?: T;
 
   /**
    * Time in milliseconds in which the message was generated.
@@ -38,7 +38,7 @@ export class MetaData {
    * @param key Original key associated to the message sent through the events bus.
    * @param [data] Optional: Additional data sent with the message.
    */
-  constructor(key: string, data?: any) {
+  constructor(key: string, data?: T) {
     this._id = this.uuid();
     this._key = key;
     this._data = data;
@@ -62,7 +62,7 @@ export class MetaData {
   /**
    * Data associated to message. It's optional.
    */
-  public get data(): any {
+  public get data(): T | undefined {
     return this._data;
   }
 

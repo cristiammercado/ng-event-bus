@@ -9,7 +9,7 @@ import { MetaData } from './meta-data';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.1.0
+ * @version 5.2.0
  */
 export class NgEventBus {
   /**
@@ -32,7 +32,7 @@ export class NgEventBus {
   /**
    * Validates key matching.
    *
-   * @param  key Key to identify the message/event.
+   * @param key Key to identify the message/event.
    * @param wildcard Wildcard received from on method.
    *
    * @return true if key matches, false otherwise.
@@ -76,14 +76,14 @@ export class NgEventBus {
    * @param  [data] Optional: Additional data sent with the message/event.
    * @throws {Error} key parameter must be a string and must not be empty.
    */
-  public cast(key: string, data?: any): void {
+  public cast<T>(key: string, data?: T): void {
     if (!key.trim().length) {
       throw new Error('key parameter must be a string and must not be empty');
     }
 
-    const metadata: MetaData = new MetaData(key, data);
+    const metadata: MetaData<T> = new MetaData<T>(key, data);
 
-    this.eventBus.next({ key, data, metadata });
+    this.eventBus.next({ key, metadata });
   }
 
   /**
@@ -93,7 +93,7 @@ export class NgEventBus {
    *
    * @return Observable you can subscribe to listen messages/events.
    */
-  public on<T>(key: string): Observable<MetaData> {
+  public on<T>(key: string): Observable<MetaData<T>> {
     return this.eventBus.asObservable().pipe(
       filter((event: IEventBusMessage) => this.keyMatch(event.key, key)),
       map((event: IEventBusMessage) => event.metadata)
