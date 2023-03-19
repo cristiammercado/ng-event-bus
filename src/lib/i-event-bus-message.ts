@@ -14,12 +14,7 @@ export interface IEventBusMessage {
   key: string;
 
   /**
-   * Data associated to message.
-   */
-  data?: any;
-
-  /**
    * Full message metadata.
    */
-  metadata: MetaData<any>;
+  metadata: MetaData;
 }

@@ -83,7 +83,7 @@ export class NgEventBus {
 
     const metadata: MetaData<T> = new MetaData<T>(key, data);
 
-    this.eventBus.next({ key, data, metadata });
+    this.eventBus.next({ key, metadata });
   }
 
   /**
