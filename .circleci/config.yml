@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.1.0
-  browser-tools: circleci/browser-tools@1.4.1
+  node: circleci/node@5.1.1
+  browser-tools: circleci/browser-tools@1.4.6
 
 jobs:
   build:
@@ -23,17 +23,17 @@ jobs:
       - save_cache:
           key: v1-npm-deps-{{ checksum "package-lock.json" }}
           paths:
-            - ./node_modules
+            - node_modules
+      - run:
+          name: Build
+          command: npm run build
       - run:
           name: Test
           command: npm run test
       - store_test_results:
-          path: ./coverage/junit-report.xml
+          path: coverage/ng-event-bus/junit
       - store_artifacts:
-          path: ./coverage/html-report
-      - run:
-          name: Build
-          command: npm run build
+          path: coverage/ng-event-bus/html-report
 
 workflows:
   test-and-build:

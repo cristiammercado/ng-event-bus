@@ -1,68 +1,43 @@
 {
   "name": "ng-event-bus",
-  "version": "5.2.0",
-  "description": "RxJS-based message/event bus service for Angular.",
-  "homepage": "https://github.com/cristiammercado/ng-event-bus",
-  "bugs": {
-    "email": "contact@cristiammercado.com",
-    "url": "https://github.com/cristiammercado/ng-event-bus/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cristiammercado/ng-event-bus.git"
-  },
-  "keywords": [
-    "angular",
-    "message-bus",
-    "event-bus",
-    "events",
-    "bus",
-    "rxjs"
-  ],
-  "author": {
-    "name": "Cristiam Mercado",
-    "email": "contact@cristiammercado.com",
-    "url": "https://www.cristiammercado.com/en"
-  },
-  "license": "MIT",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "build": "ng build --configuration production",
-    "test": "ng test --watch=false --code-coverage",
     "start": "ng serve",
-    "prettier:write": "prettier -w \"{src,projects}/**/*.{ts,tsx}\"",
-    "prettier:check": "prettier -l \"{src,projects}/**/*.{ts,tsx}\""
+    "build": "ng build ng-event-bus",
+    "test": "ng test --watch=false --code-coverage",
+    "prettier:write": "prettier -w \"projects/**/*.{ts,tsx}\"",
+    "prettier:check": "prettier -l \"projects/**/*.{ts,tsx}\""
   },
+  "private": true,
   "dependencies": {
-    "rxjs": "~7.8.0"
+    "@angular/animations": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~15.2.4",
-    "@angular/cli": "~15.2.4",
-    "@angular/common": "~15.2.3",
-    "@angular/compiler": "~15.2.3",
-    "@angular/compiler-cli": "~15.2.3",
-    "@angular/core": "~15.2.3",
-    "@angular/platform-browser": "~15.2.3",
-    "@angular/platform-browser-dynamic": "~15.2.3",
-    "@types/jasmine": "~4.3.1",
-    "@types/node": "~18.15.3",
-    "jasmine-core": "~4.6.0",
-    "jasmine-spec-reporter": "~7.0.0",
-    "karma": "~6.4.1",
-    "karma-chrome-launcher": "~3.1.1",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
-    "karma-junit-reporter": "~2.0.1",
-    "ng-packagr": "~15.2.2",
-    "prettier": "~2.8.4",
-    "tslib": "~2.5.0",
-    "typescript": "~4.9.5",
-    "zone.js": "~0.13.0"
-  },
-  "engines": {
-    "node": ">= 14"
-  },
-  "types": "index.d.ts"
+    "@angular-devkit/build-angular": "17.0.7",
+    "@angular/cli": "17.0.7",
+    "@angular/compiler-cli": "17.0.7",
+    "@types/jasmine": "5.1.4",
+    "jasmine-core": "5.1.1",
+    "jasmine-spec-reporter": "7.0.0",
+    "karma": "6.4.2",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.1",
+    "karma-jasmine": "5.1.0",
+    "karma-jasmine-html-reporter": "2.1.0",
+    "karma-junit-reporter": "2.0.1",
+    "ng-packagr": "17.0.2",
+    "prettier": "3.1.1",
+    "typescript": "5.2.2"
+  }
 }
