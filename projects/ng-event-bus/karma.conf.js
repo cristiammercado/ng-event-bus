@@ -18,11 +18,11 @@ module.exports = (config) => {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, 'coverage', 'html-report'),
+      dir: require('path').join(__dirname, '..', '..', 'coverage', 'ng-event-bus', 'html-report'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' },
+        {type: 'html'},
+        {type: 'text-summary'},
       ],
     },
     customLaunchers: {
@@ -32,7 +32,7 @@ module.exports = (config) => {
       },
     },
     junitReporter: {
-      outputFile: require('path').join(__dirname, 'coverage', 'junit-report.xml'),
+      outputFile: require('path').join(__dirname, '..', '..', 'coverage', 'ng-event-bus', 'junit-report.xml'),
       useBrowserName: false
     },
     reporters: ['progress', 'kjhtml', 'junit'],

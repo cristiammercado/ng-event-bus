@@ -9,7 +9,7 @@ import { MetaData } from './meta-data';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.2.0
+ * @version 6.0.0
  */
 export class NgEventBus {
   /**
@@ -20,7 +20,7 @@ export class NgEventBus {
   /**
    * Key message separator.
    */
-  private separator = ':';
+  private separator: string = ':';
 
   /**
    * Constructor for this class: Initializes event bus.
@@ -38,24 +38,22 @@ export class NgEventBus {
    * @return true if key matches, false otherwise.
    */
   public keyMatch(key: string, wildcard: string): boolean {
-    const w = '*';
-    const ww = '**';
+    const w: string = '*';
+    const ww: string = '**';
 
-    const partMatch = (wl: string, k: string): boolean => {
-      return wl === w || wl === k;
-    };
+    const partMatch = (wl: string, k: string): boolean => wl === w || wl === k;
 
-    const sep = this.separator;
-    const kArr = key.split(sep);
-    const wArr = wildcard.split(sep);
+    const sep: string = this.separator;
+    const kArr: string[] = key.split(sep);
+    const wArr: string[] = wildcard.split(sep);
 
-    const kLen = kArr.length;
-    const wLen = wArr.length;
-    const max = Math.max(kLen, wLen);
+    const kLen: number = kArr.length;
+    const wLen: number = wArr.length;
+    const max: number = Math.max(kLen, wLen);
 
-    for (let i = 0; i < max; i++) {
-      const cK = kArr[i];
-      const cW = wArr[i];
+    for (let i: number = 0; i < max; i++) {
+      const cK: string = kArr[i];
+      const cW: string = wArr[i];
 
       if (cW === ww && typeof cK !== 'undefined') {
         return true;
@@ -95,8 +93,8 @@ export class NgEventBus {
    */
   public on<T>(key: string): Observable<MetaData<T>> {
     return this.eventBus.asObservable().pipe(
-      filter((event: IEventBusMessage) => this.keyMatch(event.key, key)),
-      map((event: IEventBusMessage) => event.metadata)
+      filter((event: IEventBusMessage): boolean => this.keyMatch(event.key, key)),
+      map((event: IEventBusMessage): MetaData<T> => event.metadata)
     );
   }
 }

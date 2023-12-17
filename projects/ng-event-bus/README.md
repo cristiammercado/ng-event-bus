@@ -9,6 +9,18 @@ RxJS-based message/event bus service for Angular apps inspired by [NgRadio](http
 
 `npm install --save ng-event-bus`
 
+## Angular Compatibility Table
+
+| Angular version | ng-event-bus version |
+|-----------------|----------------------|
+| 17.x            | 6.0.x                |
+| 16.x            | 5.1.x                |
+| 15.x            | 5.0.x                |
+| 14.x            | 4.x.x                |
+| 13.x            | 4.x.x                |
+| 12.x            | 3.x.x                |
+| 11.x            | 2.x.x                |
+
 ## Usage
 
 First, import it:
@@ -41,12 +53,12 @@ Since you have `NgEventBus` instance in your app, you can use these methods for 
 
 Where:
 
- - `key` must be a string and must not be empty, otherwise it will throw an exception. 
- - `data` is optional and can be any type of object.
- - `pattern` must be a string and must not be empty. 
- 
+- `key` must be a string and must not be empty, otherwise it will throw an exception.
+- `data` is optional and can be any type of object.
+- `pattern` must be a string and must not be empty.
+
 ### Patterns
- 
+
 Patterns may contain multiple segments split by `:`. Use this feature to create namespaces for messages you cast. You can use `*` in `pattern` to subscribe to any matching segment, or use `**` to subscribe to all segments, starting from particular position.
 
 For example, you can use `on('error:*')` and subscribe to all errors, including something like `error:http` or `error:internal` and so on:
@@ -78,15 +90,15 @@ this.eventBus.on('**').subscribe((meta: MetaData) => {
 
 ```
 
-### MetaData (Breaking change in v2.x.x)
+### MetaData
 
 When you subscribe to the observable, you can optionally get an instance of `MetaData` class. This instance contains information related to the emission of the event through the bus. The properties of this instance are:
 
- - `id`: A unique identifier of the message sent through the events bus.
- - `key`: Original key associated to the message.
- - `data`: Data associated to message. It's optional.
- - `timestamp`: Time in milliseconds in which the message was generated.
- 
+- `id`: A unique identifier of the message sent through the events bus.
+- `key`: Original key associated to the message.
+- `data`: Data associated to message. It's optional.
+- `timestamp`: Time in milliseconds in which the message was generated.
+
 ```
 this.eventBus.cast('app:start', 'started');
 
@@ -115,25 +127,25 @@ this.eventBus.on('**').subscribe((meta: MetaData) => {
 
 These strings will match:
 
- - `on('**'    ).suscribe` can subscribe to any message with any segments count
+- `on('**'    ).suscribe` can subscribe to any message with any segments count
 
- - `on('a'     ).suscribe` can subscribe to `cast('a', ...)`
+- `on('a'     ).suscribe` can subscribe to `cast('a', ...)`
 
- - `on('a:b'   ).suscribe` can subscribe to `cast('a:b', ...)`
+- `on('a:b'   ).suscribe` can subscribe to `cast('a:b', ...)`
 
- - `on('a:b:c' ).suscribe` can subscribe to `cast('a:b:c', ...)`
+- `on('a:b:c' ).suscribe` can subscribe to `cast('a:b:c', ...)`
 
- - `on('a:**'  ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:c:d:e:f', ...)`
+- `on('a:**'  ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:c:d:e:f', ...)`
 
- - `on('a:*:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:f:g', ...)`, `cast('a:n:m', ...)`
+- `on('a:*:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:f:g', ...)`, `cast('a:n:m', ...)`
 
- - `on('a:b:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:d', ...)`, but not `cast('a:b', ...)`
+- `on('a:b:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`, `cast('a:b:d', ...)`, but not `cast('a:b', ...)`
 
- - `on('a:b:**').suscribe` can subscribe to `cast('a:b:c',. ..)`
+- `on('a:b:**').suscribe` can subscribe to `cast('a:b:c',. ..)`
 
- - `on('*:b:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`
+- `on('*:b:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`
 
- - `on('a:*:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`
+- `on('a:*:*' ).suscribe` can subscribe to `cast('a:b:c', ...)`
 
 ### Need to unsubscribe (observable)?
 
