@@ -1,0 +1,7 @@
+/*
+ * Public API Surface of ng-event-bus
+ */
+export * from './lib/ng-event-bus';
+export * from './lib/meta-data';
+export * from './lib/i-event-bus-message';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL25nLWV2ZW50LWJ1cy9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsb0JBQW9CLENBQUM7QUFDbkMsY0FBYyxpQkFBaUIsQ0FBQztBQUNoQyxjQUFjLDJCQUEyQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiBuZy1ldmVudC1idXNcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi9uZy1ldmVudC1idXMnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvbWV0YS1kYXRhJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2ktZXZlbnQtYnVzLW1lc3NhZ2UnO1xuIl19

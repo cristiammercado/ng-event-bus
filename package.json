@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ng-event-bus",
     "test": "ng test --watch=false --code-coverage",
     "prettier:write": "prettier -w \"projects/**/*.{ts,tsx}\"",
     "prettier:check": "prettier -l \"projects/**/*.{ts,tsx}\""

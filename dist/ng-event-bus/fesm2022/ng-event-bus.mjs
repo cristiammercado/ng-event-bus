@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.2.0
+ * @version 6.0.0
  */
 class MetaData {
     /**
@@ -66,7 +66,7 @@ class MetaData {
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 5.2.0
+ * @version 6.0.0
  */
 class NgEventBus {
     /**
@@ -90,9 +90,7 @@ class NgEventBus {
     keyMatch(key, wildcard) {
         const w = '*';
         const ww = '**';
-        const partMatch = (wl, k) => {
-            return wl === w || wl === k;
-        };
+        const partMatch = (wl, k) => wl === w || wl === k;
         const sep = this.separator;
         const kArr = key.split(sep);
         const wArr = wildcard.split(sep);
