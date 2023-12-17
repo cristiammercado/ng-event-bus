@@ -1,77 +1,28 @@
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .content {
-    display: flex;
-    margin: 0 auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-    width: 45vh;
-  }
-
-  .card svg.material-icons path {
-    fill: #888;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-</style>
-
-<div class="content" role="main">
-  <div style="width: 100%; text-align: center">
-    <br>
-    <h2>Messages</h2>
-    <textarea [id]="'messages'" disabled style="width: 100%;font-size: 11px;" rows="20"></textarea>
-  </div>
+<div class="content">
+  <h2>Messages</h2>
+  <p *ngIf="items.length == 0">
+    Send your first event to see it here.
+  </p>
+  <ul *ngIf="items.length > 0">
+    <li *ngFor="let item of items.reverse(); index as i">
+      <div>
+        <b>ID:</b>&nbsp;{{ item.id }}
+      </div>
+      <div>
+        <b>Time:</b>&nbsp;{{ item.timestamp | date:'medium' }}
+      </div>
+      <div>
+        <b>Channel:</b>&nbsp;{{ item.key }}
+      </div>
+      <div class="content-field">
+        <div>
+          <b>Content:</b>
+        </div>
+        <div>
+          <textarea readonly rows="4">{{ item.data | json }}</textarea>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
 
