@@ -5,7 +5,7 @@ import { MetaData } from './meta-data';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 6.0.0
+ * @version 8.0.0
  */
 export declare class NgEventBus {
     /**

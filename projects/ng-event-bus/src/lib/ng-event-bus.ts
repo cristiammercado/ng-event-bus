@@ -9,7 +9,7 @@ import { MetaData } from './meta-data';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 6.0.0
+ * @version 8.0.0
  */
 export class NgEventBus {
   /**
@@ -55,13 +55,9 @@ export class NgEventBus {
       const cK: string = kArr[i];
       const cW: string = wArr[i];
 
-      if (cW === ww && typeof cK !== 'undefined') {
-        return true;
-      }
+      if (cW === ww && typeof cK !== 'undefined') return true;
 
-      if (!partMatch(cW, cK)) {
-        return false;
-      }
+      if (!partMatch(cW, cK)) return false;
     }
 
     return true;
@@ -75,9 +71,7 @@ export class NgEventBus {
    * @throws {Error} key parameter must be a string and must not be empty.
    */
   public cast<T>(key: string, data?: T): void {
-    if (!key.trim().length) {
-      throw new Error('key parameter must be a string and must not be empty');
-    }
+    if (!key.trim().length) throw new Error('key parameter must be a string and must not be empty');
 
     const metadata: MetaData<T> = new MetaData<T>(key, data);
 

@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 6.0.0
+ * @version 8.0.0
  */
 class MetaData {
     /**
@@ -66,7 +66,7 @@ class MetaData {
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 6.0.0
+ * @version 8.0.0
  */
 class NgEventBus {
     /**
@@ -100,12 +100,10 @@ class NgEventBus {
         for (let i = 0; i < max; i++) {
             const cK = kArr[i];
             const cW = wArr[i];
-            if (cW === ww && typeof cK !== 'undefined') {
+            if (cW === ww && typeof cK !== 'undefined')
                 return true;
-            }
-            if (!partMatch(cW, cK)) {
+            if (!partMatch(cW, cK))
                 return false;
-            }
         }
         return true;
     }
@@ -117,9 +115,8 @@ class NgEventBus {
      * @throws {Error} key parameter must be a string and must not be empty.
      */
     cast(key, data) {
-        if (!key.trim().length) {
+        if (!key.trim().length)
             throw new Error('key parameter must be a string and must not be empty');
-        }
         const metadata = new MetaData(key, data);
         this.eventBus.next({ key, metadata });
     }

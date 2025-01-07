@@ -5,7 +5,7 @@
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 6.0.0
+ * @version 8.0.0
  */
 export class MetaData<T = any> {
   /**
@@ -80,7 +80,7 @@ export class MetaData<T = any> {
    * @return UUID version 4.
    */
   private uuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c: string) => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c: string): string => {
       const r: number = (Math.random() * 16) | 0;
       const v: number = c === 'x' ? r : (r & 0x3) | 0x8;
       return v.toString(16);

@@ -13,6 +13,7 @@ RxJS-based message/event bus service for Angular apps inspired by [NgRadio](http
 
 | Angular version | ng-event-bus version |
 |-----------------|----------------------|
+| 19.x            | 8.x.x                |
 | 18.x            | 7.x.x                |
 | 17.x            | 6.x.x                |
 | 16.x            | 5.1.x                |
