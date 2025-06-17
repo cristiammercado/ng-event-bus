@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 8.0.0
+ * @version 9.0.0
  */
 class MetaData {
     /**
@@ -47,7 +47,7 @@ class MetaData {
         return this._timestamp;
     }
     /**
-     * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
+     * Generates UUID version 4. The solution above uses Math.random() for brevity, however, Math.random() is not
      * guaranteed to be a high-quality RNG.
      *
      * @return UUID version 4.
@@ -66,7 +66,7 @@ class MetaData {
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 8.0.0
+ * @version 9.0.0
  */
 class NgEventBus {
     /**

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe, JsonPipe } from '@angular/common';
 
-import { NgEventBus } from '../../../../ng-event-bus/src/lib/ng-event-bus';
 import { MetaData } from '../../../../ng-event-bus/src/lib/meta-data';
+import { NgEventBus } from '../../../../ng-event-bus/src/lib/ng-event-bus';
 
 import { Message } from '../types/message';
-import { DatePipe, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-another',
