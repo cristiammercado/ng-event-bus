@@ -1,15 +1,15 @@
 import { Observable, Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { IEventBusMessage } from './i-event-bus-message';
 import { MetaData } from './meta-data';
+import { IEventBusMessage } from './i-event-bus-message';
 
 /**
  * Main library class.
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 8.0.0
+ * @version 9.0.0
  */
 export class NgEventBus {
   /**

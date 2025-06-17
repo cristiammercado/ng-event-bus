@@ -13,6 +13,7 @@ RxJS-based message/event bus service for Angular apps inspired by [NgRadio](http
 
 | Angular version | ng-event-bus version |
 |-----------------|----------------------|
+| 20.x            | 9.x.x                |
 | 19.x            | 8.x.x                |
 | 18.x            | 7.x.x                |
 | 17.x            | 6.x.x                |
@@ -30,7 +31,7 @@ First, import it:
 
 `import { NgEventBus } from 'ng-event-bus';`
 
-Then, inject it as a service (do not forget about providers) in your Angular application:
+Then, inject it as a service (remember about providers) in your Angular application:
 
 ```
 import { NgEventBus } from 'ng-event-bus';
@@ -52,7 +53,7 @@ Since you have `NgEventBus` instance in your app, you can use these methods for 
 
 * `this.eventBus.cast(key, data)` - send a message to event bus.
 
-* `this.eventBus.on(pattern)` - returns observable you can subscribe to listen events.
+* `this.eventBus.on(pattern)` - returns observable you can subscribe to listen to events.
 
 Where:
 
@@ -98,8 +99,8 @@ this.eventBus.on('**').subscribe((meta: MetaData) => {
 When you subscribe to the observable, you can optionally get an instance of `MetaData` class. This instance contains information related to the emission of the event through the bus. The properties of this instance are:
 
 - `id`: A unique identifier of the message sent through the events bus.
-- `key`: Original key associated to the message.
-- `data`: Data associated to message. It's optional.
+- `key`: Original key associated with the message.
+- `data`: Data associated with a message. It's optional.
 - `timestamp`: Time in milliseconds in which the message was generated.
 
 ```
@@ -152,13 +153,13 @@ These strings will match:
 
 ### Need to unsubscribe (observable)?
 
-Yes, in the normal scenario usage it's necessary you unsubscribe from the observable to avoid memory leaks. That happens because the library exposes an infinite observable. That's no exactly related to the library, but in the way in which the observables work in RxJS.
+Yes, in the normal scenario usage it's necessary you unsubscribe from the observable to avoid memory leaks. That happens because the library exposes an infinite observable. That's not exactly related to the library, but in the way in which the observables work in RxJS.
 
-However, there are ways that you don't need to unsubscribe, for example if you use `.first()` in the pipe of the observable because using this method would turn it into a finite observable (It would apply in your case if you're just waiting for a one-time event).
+However, there are ways that you don't need to unsubscribe, for example, if you use `.first()` in the pipe of the observable because using this method would turn it into a finite observable (It would apply in your case if you're just waiting for a one-time event).
 
 I recommend you to read this [stackoverflow answer](https://stackoverflow.com/questions/50629357/rxjs-angular-unsubscribe-from-subjects/50633482#50633482) about a similar question.
 
-## Release history & changelog
+## Release history and changelog
 
 See the [Releases](https://github.com/cristiammercado/ng-event-bus/releases) page for a list of all releases, including changes.
 

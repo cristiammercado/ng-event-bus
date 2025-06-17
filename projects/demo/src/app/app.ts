@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 
-import { NgEventBus } from '../../../ng-event-bus/src/lib/ng-event-bus';
 import { MetaData } from '../../../ng-event-bus/src/lib/meta-data';
+import { NgEventBus } from '../../../ng-event-bus/src/lib/ng-event-bus';
 
 import { Message } from './types/message';
+import { Another } from './another/another';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
+  providers: [NgEventBus],
+  imports: [Another],
 })
-export class AppComponent {
+export class App {
   title: string = 'demo';
 
   constructor(private eventBus: NgEventBus) {

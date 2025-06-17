@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe, JsonPipe } from '@angular/common';
 
-import { NgEventBus } from '../../../../ng-event-bus/src/lib/ng-event-bus';
 import { MetaData } from '../../../../ng-event-bus/src/lib/meta-data';
+import { NgEventBus } from '../../../../ng-event-bus/src/lib/ng-event-bus';
 
 import { Message } from '../types/message';
 
 @Component({
   selector: 'app-another',
-  templateUrl: './another.component.html',
-  styleUrls: ['./another.component.scss'],
+  templateUrl: './another.html',
+  styleUrl: './another.scss',
+  imports: [DatePipe, JsonPipe],
 })
-export class AnotherComponent implements OnInit {
+export class Another implements OnInit {
   items: MetaData<Message>[] = [];
 
   constructor(private eventBus: NgEventBus) {}

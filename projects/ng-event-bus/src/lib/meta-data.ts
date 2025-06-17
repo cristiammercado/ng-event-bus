@@ -5,7 +5,7 @@
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 8.0.0
+ * @version 9.0.0
  */
 export class MetaData<T = any> {
   /**
@@ -74,7 +74,7 @@ export class MetaData<T = any> {
   }
 
   /**
-   * Generates UUID version 4. The solution above uses Math.random() for brevity, however Math.random() is not
+   * Generates UUID version 4. The solution above uses Math.random() for brevity, however, Math.random() is not
    * guaranteed to be a high-quality RNG.
    *
    * @return UUID version 4.
