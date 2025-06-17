@@ -10,13 +10,18 @@ jobs:
       - image: cimg/node:lts-browsers
     resource_class: large
     steps:
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      - browser-tools/install_chrome
+      - browser-tools/install_chromedriver
       - checkout
       - restore_cache:
           keys:
             - v1-npm-deps-{{ checksum "package-lock.json" }}
             - v1-npm-deps-
+      - run:
+          name: Check install
+          command: |
+            google-chrome --version
+            chromedriver --version
       - run:
           name: Install dependencies
           command: npm install
