@@ -1,5 +1,7 @@
-import { NgEventBus } from './ng-event-bus';
+import { Observable } from 'rxjs';
+
 import { MetaData } from './meta-data';
+import { NgEventBus } from './ng-event-bus';
 
 function uuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c: string) => {
@@ -105,5 +107,31 @@ describe('ng-event-bus', () => {
     const key = '';
 
     expect(() => eventBus.cast(key)).toThrowError('key parameter must be a string and must not be empty');
+  });
+
+  it('should preserve the explicit payload type returned by on', () => {
+    const eventBus = new NgEventBus();
+    const events = eventBus.on<{ message: string }>('message:typed');
+
+    expectTypeOf(events).toEqualTypeOf<Observable<MetaData<{ message: string }>>>();
+
+    events.subscribe((event) => {
+      expectTypeOf(event.data).toEqualTypeOf<{ message: string }>();
+      expect(event.data).toEqual({ message: 'typed payload' });
+    });
+    eventBus.cast('message:typed', { message: 'typed payload' });
+  });
+
+  it('should type events without an explicit payload as undefined', () => {
+    const eventBus = new NgEventBus();
+    const events = eventBus.on('app:ready');
+
+    expectTypeOf(events).toEqualTypeOf<Observable<MetaData<undefined>>>();
+
+    events.subscribe((event) => {
+      expectTypeOf(event.data).toEqualTypeOf<undefined>();
+      expect(event.data).toBeUndefined();
+    });
+    eventBus.cast('app:ready');
   });
 });

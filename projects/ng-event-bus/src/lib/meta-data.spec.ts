@@ -29,6 +29,14 @@ describe('meta-data', () => {
 
     expect(metaData.data).toBeDefined();
     expect(metaData.data).toEqual(data);
+    expectTypeOf(metaData.data).toEqualTypeOf<string>();
+  });
+
+  it('should type omitted data as undefined', () => {
+    const metaData = new MetaData('app:ready');
+
+    expect(metaData.data).toBeUndefined();
+    expectTypeOf(metaData.data).toEqualTypeOf<undefined>();
   });
 
   it('should get timestamp from instance', () => {

@@ -80,14 +80,26 @@ eventBus.cast<Greeting>('message:greet', { text: 'Hello!' });
 
 ### `on(pattern)`
 
-Returns an `Observable<MetaData<T>>` for events whose keys match the pattern:
+Returns an `Observable<MetaData<T>>` for events whose keys match the pattern.
+When `T` is provided explicitly, `data` has exactly that type:
 
 ```ts
 eventBus.on<Greeting>('message:*').subscribe((event) => {
   console.log(event.key);
-  console.log(event.data?.text);
+  console.log(event.data.text);
 });
 ```
+
+When no payload type is provided, `data` defaults to `undefined`:
+
+```ts
+eventBus.on('app:ready').subscribe((event) => {
+  // event.data is undefined
+});
+```
+
+The generic type expresses the expected contract for the event key. Make sure
+all publishers of the same key use a compatible payload.
 
 The bus uses a regular RxJS `Subject`, so it does not replay events emitted
 before a subscription is created.
@@ -124,12 +136,12 @@ eventBus.cast('error:http', { status: 500 });
 
 Every subscription receives a `MetaData<T>` instance:
 
-| Property    | Type             | Description                               |
-| ----------- | ---------------- | ----------------------------------------- |
-| `id`        | `string`         | Unique identifier generated for the event |
-| `key`       | `string`         | Original event key                        |
-| `data`      | `T \| undefined` | Optional event payload                    |
-| `timestamp` | `number`         | Creation time in Unix milliseconds        |
+| Property    | Type     | Description                                   |
+| ----------- | -------- | --------------------------------------------- |
+| `id`        | `string` | Unique identifier generated for the event     |
+| `key`       | `string` | Original event key                            |
+| `data`      | `T`      | Event payload type declared by the subscriber |
+| `timestamp` | `number` | Creation time in Unix milliseconds            |
 
 ```ts
 eventBus.on<Greeting>('message:greet').subscribe((event) => {
