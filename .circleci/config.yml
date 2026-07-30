@@ -1,44 +1,31 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@7.2.1
-  browser-tools: circleci/browser-tools@2.3.2
-
 jobs:
   build:
     docker:
-      - image: cimg/node:lts-browsers
-    resource_class: large
+      - image: cimg/node:24.18
     steps:
-      - browser-tools/install_chrome
-      - browser-tools/install_chromedriver
       - checkout
       - restore_cache:
           keys:
-            - v1-npm-deps-{{ checksum "package-lock.json" }}
-            - v1-npm-deps-
-      - run:
-          name: Check install
-          command: |
-            google-chrome --version
-            chromedriver --version
+            - v2-npm-cache-{{ checksum "package-lock.json" }}
+            - v2-npm-cache-
       - run:
           name: Install dependencies
-          command: npm install
+          command: npm ci
       - save_cache:
-          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+          key: v2-npm-cache-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules
+            - ~/.npm
       - run:
-          name: Build
-          command: npm run build
+          name: Build library and demo
+          command: npm run build:all
       - run:
-          name: Test
-          command: npm run test
-      - store_test_results:
-          path: coverage/ng-event-bus/junit
+          name: Test and collect coverage
+          command: npm run test:coverage
       - store_artifacts:
-          path: coverage/ng-event-bus/html-report
+          path: coverage
+          destination: coverage
 
 workflows:
   test-and-build:

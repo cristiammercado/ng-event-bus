@@ -9,13 +9,13 @@ import { IEventBusMessage } from './i-event-bus-message';
  *
  * @author Cristiam Mercado
  * @since 2.0.0
- * @version 9.0.0
+ * @version 11.0.0
  */
 export class NgEventBus {
   /**
    * Main observable to multicast to all observers.
    */
-  private eventBus: Subject<IEventBusMessage>;
+  private eventBus: Subject<IEventBusMessage<unknown>>;
 
   /**
    * Key message separator.
@@ -26,7 +26,7 @@ export class NgEventBus {
    * Constructor for this class: Initializes event bus.
    */
   constructor() {
-    this.eventBus = new Subject<IEventBusMessage>();
+    this.eventBus = new Subject<IEventBusMessage<unknown>>();
   }
 
   /**
@@ -67,10 +67,12 @@ export class NgEventBus {
    * Publish a message/event to event bus.
    *
    * @param  key Key to identify the message/event.
-   * @param  [data] Optional: Additional data sent with the message/event.
+   * @param [data] Optional payload sent with the message/event.
    * @throws {Error} key parameter must be a string and must not be empty.
    */
-  public cast<T>(key: string, data?: T): void {
+  public cast(key: string): void;
+  public cast<T>(key: string, data: T): void;
+  public cast<T = undefined>(key: string, data?: T): void {
     if (!key.trim().length) throw new Error('key parameter must be a string and must not be empty');
 
     const metadata: MetaData<T> = new MetaData<T>(key, data);
@@ -81,14 +83,15 @@ export class NgEventBus {
   /**
    * Returns an observable you can subscribe to listen messages/events.
    *
-   * @param key Key to identify the message/event.
+   * @typeParam T Expected payload type. Defaults to `undefined` when omitted.
+   * @param key Key or wildcard pattern used to identify messages/events.
    *
    * @return Observable you can subscribe to listen messages/events.
    */
-  public on<T>(key: string): Observable<MetaData<T>> {
+  public on<T = undefined>(key: string): Observable<MetaData<T>> {
     return this.eventBus.asObservable().pipe(
-      filter((event: IEventBusMessage): boolean => this.keyMatch(event.key, key)),
-      map((event: IEventBusMessage): MetaData<T> => event.metadata)
+      filter((event: IEventBusMessage<unknown>): boolean => this.keyMatch(event.key, key)),
+      map((event: IEventBusMessage<unknown>): MetaData<T> => event.metadata as MetaData<T>)
     );
   }
 }

@@ -29,6 +29,14 @@ describe('meta-data', () => {
 
     expect(metaData.data).toBeDefined();
     expect(metaData.data).toEqual(data);
+    expectTypeOf(metaData.data).toEqualTypeOf<string>();
+  });
+
+  it('should type omitted data as undefined', () => {
+    const metaData = new MetaData('app:ready');
+
+    expect(metaData.data).toBeUndefined();
+    expectTypeOf(metaData.data).toEqualTypeOf<undefined>();
   });
 
   it('should get timestamp from instance', () => {
@@ -37,7 +45,7 @@ describe('meta-data', () => {
     const metaData = new MetaData(key, data);
 
     expect(metaData.timestamp).toBeDefined();
-    expect(metaData.timestamp).toEqual(jasmine.any(Number));
+    expect(metaData.timestamp).toEqual(expect.any(Number));
   });
 
   function uuid() {
