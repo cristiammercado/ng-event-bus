@@ -1,6 +1,6 @@
 {
   "name": "ng-event-bus",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "description": "RxJS-based message/event bus service for Angular.",
   "homepage": "https://github.com/cristiammercado/ng-event-bus",
   "bugs": {
@@ -26,13 +26,12 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^21.0.0",
-    "@angular/core": "^21.0.0"
+    "@angular/common": "^22.1.0",
+    "@angular/core": "^22.1.0",
+    "rxjs": "^7.8.2"
   },
   "dependencies": {
-    "rxjs": "^7.8.2",
     "tslib": "^2.8.1"
   },
-  "sideEffects": false,
-  "types": "index.d.ts"
+  "sideEffects": false
 }

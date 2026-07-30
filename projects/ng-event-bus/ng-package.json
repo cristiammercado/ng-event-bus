@@ -3,8 +3,5 @@
   "dest": "../../dist/ng-event-bus",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "allowedNonPeerDependencies": [
-    "rxjs"
-  ]
+  }
 }

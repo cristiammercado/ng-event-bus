@@ -37,7 +37,7 @@ describe('meta-data', () => {
     const metaData = new MetaData(key, data);
 
     expect(metaData.timestamp).toBeDefined();
-    expect(metaData.timestamp).toEqual(jasmine.any(Number));
+    expect(metaData.timestamp).toEqual(expect.any(Number));
   });
 
   function uuid() {

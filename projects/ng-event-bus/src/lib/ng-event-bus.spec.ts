@@ -30,7 +30,7 @@ describe('ng-event-bus', () => {
 
   it('Submit to channel', () => {
     const eventBus: NgEventBus = new NgEventBus();
-    const channelMessages: any = generateMessages();
+    const channelMessages: Record<string, string> = generateMessages();
 
     // subscribe to message
     Object.keys(channelMessages).forEach((channel: string) => {
@@ -86,17 +86,17 @@ describe('ng-event-bus', () => {
 
   it('Submit to wildcard', () => {
     const eventBus: NgEventBus = new NgEventBus();
-    const values: any = {};
+    const values: Record<string, string> = {};
 
     matchPairs.forEach((pair: Array<string>) => {
       const cast = pair[0];
       const wild = pair[1];
       values[cast] = uuid();
 
-      eventBus.cast(cast, values[cast]);
       eventBus.on(wild).subscribe((receivedValue: MetaData) => {
         expect(receivedValue.data).toEqual(values[cast]);
       });
+      eventBus.cast(cast, values[cast]);
     });
   });
 
