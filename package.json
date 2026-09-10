@@ -34,6 +34,6 @@
     "ng-packagr": "22.1.0",
     "prettier": "3.9.6",
     "typescript": "6.0.3",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   }
 }
